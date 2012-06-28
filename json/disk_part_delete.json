@@ -1,1 +1,10 @@
-{ "result":"ok"}
+{
+	"request":{
+		"dev":"/dev/sda",
+		"num":3
+	},
+	
+	"result":{
+		"result":"ok"
+	}
+}

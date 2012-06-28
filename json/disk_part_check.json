@@ -1,1 +1,9 @@
-{ "process":30 }
+{
+	"request":{
+		"dev":"/dev/sda", "dev_comment":"硬盘标识，用来确定是对那块硬盘操作",
+		"num":1, "num_comment":"分区编号，用来确定是对硬盘中的那个分区进行操作"
+	},
+	"result": {
+		"process":30, "process_comment":"30就表示完成了30%"
+	}
+}

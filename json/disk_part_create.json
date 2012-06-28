@@ -1,1 +1,10 @@
-{ "result":"ok" }
+{
+	"request":{
+		"dev":"/dev/sda","dev_comment":"用来标记是那块硬盘进行操作",
+		"num":2, "num_comment":"用来标记是对硬盘哪个空白区域进行操作",
+		"size":200, "size_comment":"新创建分区的大小，单位M",
+	},
+	"result":{
+		"result":"ok","result_comment":"'ok'表示执行成功，'false'表示执行失败",
+	}
+}
