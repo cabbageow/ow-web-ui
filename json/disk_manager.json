@@ -51,7 +51,7 @@
 					"end":200
 				},
 				
-				"parts_comment":"扩展分区有“子”分区-逻辑分区
+				"parts_comment":"扩展分区有“子”分区-逻辑分区",
 				"parts":[
 					{
 						"dev":"/dev/sda5", 
