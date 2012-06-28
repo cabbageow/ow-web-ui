@@ -1,0 +1,124 @@
+//这里是用来测试的数据
+var s='[{"dev":"/dev/sda","size":5000000,"range":{"start":1,"range":200},"parts":[{"dev":"/dev/sda1","num":1,"type":"primary","mountpoint":"/tmp/sda1","fstype":"fat32","size":{"total":4000000,"left":3755},"range":{"start":1,"end":100}},{"dev":"/dev/sda2","num":2,"type":"extened","mountpoint":"","fstype":"","size":{"total":4000000,"left":0},"range":{"start":101,"end":200},"parts":[{"dev":"/dev/sda5","num":5,"type":"logical","mountpoint":"/tmp/sda1","fstype":"fat32","size":{"total":4000000,"left":3755},"range":{"start":101,"end":130}},{"dev":"/dev/sda6","num":6,"type":"logical","mountpoint":"/tmp/sda6","fstype":"fat32","size":{"total":4000000,"left":3755},"range":{"start":131,"end":200}}]}]},{"dev":"/dev/sdb","size":300000000,"range":{"start":1,"end":173},"parts":[{"dev":"/dev/sdb1","num":1,"type":"primary","mountpoint":"/tmp/sdb1","fstype":"fat32","size":{"total":4000000,"left":200000},"range":{"start":1,"end":173}}]}]';
+
+//这里是为了方便查看 对数据重新排版和添加注释之后的结果
+[
+	//硬盘1
+	{
+		"dev":"/dev/sda", //硬盘标识字符串
+		"size": 5000000, //硬盘大小， 单位：字节
+		"range":{  //表示在硬盘中的起始位置， 这里是整个硬盘，所以是从1到最后（这里是200）
+			"start":1,
+			"end":200
+		},
+		
+		//分区
+		"parts":[
+			//分区 1
+			{
+				"dev":"/dev/sda1",  //分区标识字符串
+				"num":1, //分区号
+				"type":"primary", //类型： primary-主分区 extened-扩展分区 logical 逻辑分区
+
+				"mountpoint":"/tmp/sda1", //分区挂载点
+				"fstype":"fat32",  //分区文件系统格式
+
+				"size":{ //分区大小
+					"total": 4000000, //总大小
+					"left": 3755 // 剩余空间
+				},
+				
+				"range":{ //这个分区位于硬盘中1-100这个位置范围内
+					"start": 1,
+					"end": 100
+				}
+			},
+			//分区2
+			{
+				"dev":"/dev/sda2",
+				"num":2,
+				"type":"extened",
+
+				"mountpoint":"", //对扩展分区忽略这个字段
+				"fstype":"",//对扩展分区忽略这个字段
+
+				"size":{
+					"total": 4000000,
+					"left": 0
+				},
+				
+				"range":{
+					"start":101,
+					"end":200
+				},
+				
+				//扩展分区有“子”分区-逻辑分区
+				"parts":[
+					{
+						"dev":"/dev/sda5",  //分区标识字符串
+						"num":5, //分区号
+						"type":"logical", //类型： primary-主分区 extened-扩展分区 logical 逻辑分区
+
+						"mountpoint":"/tmp/sda1", //分区挂载点
+						"fstype":"fat32",  //分区文件系统格式
+
+						"size":{ //分区大小
+							"total": 4000000, //总大小
+							"left": 3755 // 剩余空间
+						},
+						"range":{
+							"start":101,
+							"end":130
+						}
+					},
+					{
+						"dev":"/dev/sda6",
+						"num":6,
+						"type":"logical",
+
+						"mountpoint":"/tmp/sda6",
+						"fstype":"fat32",
+
+						"size":{
+							"total": 4000000,
+							"left": 3755
+						},
+						"range":{
+							"start":131,
+							"end":200
+						}
+					}
+				]
+			}
+		]
+	},
+	//硬盘 2
+	{
+		"dev":"/dev/sdb",
+		"size": 300000000,
+		"range":{
+			"start": 1,
+			"end": 173
+		},
+		"parts":[
+			{
+				"dev":"/dev/sdb1",
+				"num":1,
+				"type":"primary",
+
+				"mountpoint":"/tmp/sdb1",
+				"fstype":"fat32",
+
+				"size":{
+					"total": 4000000,
+					"left": 200000
+				},
+				
+				"range":{
+					"start": 1,
+					"end": 173
+				}
+			}
+		]
+	}
+]
