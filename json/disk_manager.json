@@ -1,123 +1,113 @@
-﻿[
-	"_comment_1":"硬盘1",
-	{
-		"dev":"/dev/sda", "dev_comment":"用来标识硬盘",
-		"size": 5000000, "size_comment":"硬盘大小， 单位：字节",
-
-		"range_comment":"硬盘中块的起始编号。 这里是整个硬盘，所以是从1到最后一个块（这里是200）",
-		"range":{ 
-			"start":1,
-			"end":200
+﻿[{
+	"_comment_1": "硬盘1",
+	"_comment_1": {
+		"dev": "/dev/sda",
+		"dev_comment": "用来标识硬盘",
+		"size": 5000000,
+		"size_comment": "硬盘大小, 单位：字节",
+		"range_comment": "硬盘中块的起始编号。 这里是整个硬盘,所以是从1到最后一个块（这里是200）",
+		"range": {
+			"start": 1,
+			"end": 200
 		},
-		
-		"parts_comment":"此硬盘的分区"，
-		"parts":[
-			"_comment_1":"分区 1",
-			{
-				"dev":"/dev/sda1",  "dev_comment":"分区标识字符串",
-				"num":1, "num_comment":"此分区或者空白区域在当前硬盘中的编号",
-				"type":"primary", "type_comment":"类型：primary-主分区 extened-扩展分区 logical-逻辑分区 empty-空白区域",
-
-				"mountpoint":"/tmp/sda1", "mountpoint_comment":"分区挂载点, 对'扩展分区'和'空白区域'忽略这个字段",
-				"fstype":"fat32",  "fstype_comment":"分区文件系统格式, 对'扩展分区'和'空白区域'忽略这个字段",
-
-				"size":{
-					"total": 4000000, "total_comment":"分区总大小",
-					"left": 3755, "left_comment":"剩余空间"
+		"parts_comment": "此硬盘的分区","parts": {
+			"_comment_1": "分区 1",
+			"_comment_1":{
+				"dev": "/dev/sda1",
+				"dev_comment": "分区标识字符串",
+				"num": 1,
+				"num_comment": "此分区或者空白区域在当前硬盘中的编号",
+				"type": "primary",
+				"type_comment": "类型：primary-主分区 extened-扩展分区 logical-逻辑分区 empty-空白区域",
+				"mountpoint": "/tmp/sda1",
+				"mountpoint_comment": "分区挂载点, 对'扩展分区'和'空白区域'忽略这个字段",
+				"fstype": "fat32",
+				"fstype_comment": "分区文件系统格式, 对'扩展分区'和'空白区域'忽略这个字段",
+				"size": {
+					"total": 4000000,
+					"total_comment": "分区总大小",
+					"left": 3755,
+					"left_comment": "剩余空间"
 				},
-
-				"range_comment":"当前分区在硬盘中所占用块的起始编号,用来计算所占磁盘大小的百分比",
-				"range":{
-					"start":101,
-					"end":200
+				"range_comment": "当前分区在硬盘中所占用块的起始编号,用来计算所占磁盘大小的百分比",
+				"range": {
+					"start": 101,
+					"end": 200
 				}
 			},
-			"_comment_2":"分区 2",
-			{
-				"dev":"/dev/sda2",
-				"num":2,
-				"type":"extened",
-
-				"mountpoint":"", 
-				"fstype":"",
-
-				"size":{
+			"_comment_2": "分区 2",
+			"_comment_2": {
+				"dev": "/dev/sda2",
+				"num": 2,
+				"type": "extened",
+				"mountpoint": "",
+				"fstype": "",
+				"size": {
 					"total": 4000000,
 					"left": 0
 				},
-				
-				"range":{
-					"start":101,
-					"end":200
+				"range": {
+					"start": 101,
+					"end": 200
 				},
-				
-				"parts_comment":"扩展分区有“子”分区-逻辑分区",
-				"parts":[
-					{
-						"dev":"/dev/sda5", 
-						"num":5, 
-						"type":"logical", 
-
-						"mountpoint":"/tmp/sda1",
-						"fstype":"fat32",
-
-						"size":{
+				"parts_comment": "扩展分区有“子”分区-逻辑分区",
+				"parts": {
+					"parts1": {
+						"dev": "/dev/sda5",
+						"num": 5,
+						"type": "logical",
+						"mountpoint": "/tmp/sda1",
+						"fstype": "fat32",
+						"size": {
 							"total": 4000000,
 							"left": 3755
 						},
-						"range":{
-							"start":101,
-							"end":130
+						"range": {
+							"start": 101,
+							"end": 130
 						}
 					},
-					{
-						"dev":"/dev/sda6",
-						"num":6,
-						"type":"logical",
-
-						"mountpoint":"/tmp/sda6",
-						"fstype":"fat32",
-
-						"size":{
+					"parts2": {
+						"dev": "/dev/sda6",
+						"num": 6,
+						"type": "logical",
+						"mountpoint": "/tmp/sda6",
+						"fstype": "fat32",
+						"size": {
 							"total": 4000000,
 							"left": 3755
 						},
-						"range":{
-							"start":131,
-							"end":200
+						"range": {
+							"start": 131,
+							"end": 200
 						}
 					}
-				]
+				}
 			}
-		]
+		}
 	},
-	"_comment_2":"硬盘2",
-	{
-		"dev":"/dev/sdb",
+	"_comment_2": "硬盘2",
+	"_comment_2": {
+		"dev": "/dev/sdb",
 		"size": 300000000,
-		"range":{
+		"range": {
 			"start": 1,
 			"end": 173
 		},
-		"parts":[
-			{
-				"dev":"/dev/sdb1",
-				"num":1,
-				"type":"primary",
-
-				"mountpoint":"/tmp/sdb1",
-				"fstype":"fat32",
-
-				"size":{
-					"total": 4000000,
-					"left": 200000
-				},
-				
-				"range":{
-					"start": 1,
-					"end": 173
-				}
+		"parts": {
+			"dev": "/dev/sdb1",
+			"num": 1,
+			"type": "primary",
+			"mountpoint": "/tmp/sdb1",
+			"fstype": "fat32",
+			"size": {
+				"total": 4000000,
+				"left": 200000
+			},
+			"range": {
+				"start": 1,
+				"end": 173
 			}
-		]
+		}
 	}
-]
+}]

@@ -1,18 +1,18 @@
 ﻿/*页面交互的js*/
 //ajax读取json数据
 var requestURL = {
-	disk_manager:"disk_manager.json",
-	disk_part_check:"disk_part_check.json",
-	disk_part_create:"disk_part_create.json",
-	disk_part_delete:"disk_part_delete.json",
-	disk_part_format:"disk_part_format.json"
+	disk_manager:"json/disk_manager.json",
+	disk_part_check:"json/disk_part_check.json",
+	disk_part_create:"json/disk_part_create.json",
+	disk_part_delete:"json/disk_part_delete.json",
+	disk_part_format:"json/disk_part_format.json"
 };
 var resultData={} 
-var 
-$.get("json/disk_manager.json",
+$.get(requestURL.disk_manager,
    function(data){
-     //alert("Data Loaded: " + data);
-	 console.log(data._comment_1.div);
+     eval(data);
+	 alert(10);
+	 console.log(resultData);
    });
 $("#dialog-message" ).dialog({
 			autoOpen:false,
