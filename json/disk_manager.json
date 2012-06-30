@@ -1,6 +1,7 @@
-﻿[{
+﻿[
+	{
 	"_comment_1": "硬盘1",
-	"_comment_1": {
+
 		"dev": "/dev/sda",
 		"dev_comment": "用来标识硬盘",
 		"size": 5000000,
@@ -10,9 +11,10 @@
 			"start": 1,
 			"end": 200
 		},
-		"parts_comment": "此硬盘的分区","parts": {
+		"parts_comment": "此硬盘的分区","parts": [
+			{
 			"_comment_1": "分区 1",
-			"_comment_1":{
+
 				"dev": "/dev/sda1",
 				"dev_comment": "分区标识字符串",
 				"num": 1,
@@ -35,8 +37,9 @@
 					"end": 200
 				}
 			},
+			{
 			"_comment_2": "分区 2",
-			"_comment_2": {
+
 				"dev": "/dev/sda2",
 				"num": 2,
 				"type": "extened",
@@ -50,9 +53,12 @@
 					"start": 101,
 					"end": 200
 				},
+
 				"parts_comment": "扩展分区有“子”分区-逻辑分区",
-				"parts": {
-					"parts1": {
+				"parts": [
+					{
+						"_comment_1":"逻辑分区1",
+
 						"dev": "/dev/sda5",
 						"num": 5,
 						"type": "logical",
@@ -67,7 +73,9 @@
 							"end": 130
 						}
 					},
-					"parts2": {
+					{
+						"_comment_2":"逻辑分区2",
+
 						"dev": "/dev/sda6",
 						"num": 6,
 						"type": "logical",
@@ -82,32 +90,35 @@
 							"end": 200
 						}
 					}
-				}
+				]
 			}
-		}
+		]
 	},
+	{
 	"_comment_2": "硬盘2",
-	"_comment_2": {
+
 		"dev": "/dev/sdb",
 		"size": 300000000,
 		"range": {
 			"start": 1,
 			"end": 173
 		},
-		"parts": {
-			"dev": "/dev/sdb1",
-			"num": 1,
-			"type": "primary",
-			"mountpoint": "/tmp/sdb1",
-			"fstype": "fat32",
-			"size": {
-				"total": 4000000,
-				"left": 200000
-			},
-			"range": {
-				"start": 1,
-				"end": 173
+		"parts": [
+			{
+				"dev": "/dev/sdb1",
+				"num": 1,
+				"type": "primary",
+				"mountpoint": "/tmp/sdb1",
+				"fstype": "fat32",
+				"size": {
+					"total": 4000000,
+					"left": 200000
+				},
+				"range": {
+					"start": 1,
+					"end": 173
+				}
 			}
-		}
+		]
 	}
-}]
+]
