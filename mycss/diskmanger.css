@@ -21,7 +21,7 @@ body{font-family:Microsoft YaHei,"Times New Roman",Georgia,Serif;;}
 .font14{font-size:14px;font-weight:700}
 .inlineBlock{display:inline-block;}
 .box02{height:50px;text-align:center;}
-.box02_1{width:200px;float:left;height:50px;text-align:center;line-height:50px;border:2px solid #1e1f25;margin:1px;vertical-align:center;}
+.box02_1{float:left;height:50px;text-align:center;line-height:50px;border:2px solid #1e1f25;vertical-align:center;}
 .w500{width:500px;}
 .w100{width:100px;}
 .w150{width:150px;}
