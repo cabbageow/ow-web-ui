@@ -11,7 +11,7 @@
             "end": 200
         },
         "parts_comment": "此硬盘的分区",
-        "parts": [
+        "parts":[
             {
                 "_comment_1": "分区 1",
                 "dev": "/dev/sda1",
@@ -69,8 +69,7 @@
                         "range": {
                             "start": 101,
                             "end": 130
-                        },
-                        "range_percent": "15%"
+                        }
                     },
                     {
                         "_comment_2": "逻辑分区2",
