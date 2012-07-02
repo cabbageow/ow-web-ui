@@ -12,10 +12,45 @@ $.get(requestURL.disk_manager,
 	function (data) {
 	resultData = eval(data);
 	console.log(resultData);
-	fillHtmlByData(resultData,$("#diskinfo01")[0]);
+	wycFun.fillColorHtmlByData(resultData,$("#diskinfo01")[0]);
 });
-
-function fillHtmlByData(data, Dom) {
+var wycFun = {
+	fillColorHtmlByData : function (data, Dom) {//填充图像颜色
+		var html = [],Class,percent,typeName,;
+		percent = getPercent(data[0].range['end'],data[0].parts[0].range['end']);
+		html.push('<div class="box02_1 red j_diskPart" style="width:' + data[0].parts[0].range_percent + '%">' + data[0].parts[0]._comment_1 + '</div>');
+		percent = 1-percent;
+		var othersDisk = data[0].range['end'] - data[0].parts[0].range['end'];
+		html.push('<div class="box02_1 green w500" style="width:' + percent + '">');
+		for (var i = 0; i < data[0].parts[1].parts.length; i++) {
+			switch (data[0].parts[1].parts[i].type) {
+			case "logical": //逻辑分区
+				Class = "yellow j_diskPart";
+				break;
+			case "empty":
+				Class = "block j_diskSpace";
+				break;
+			default:
+				break;
+			}
+			percent = getPercent(othersDisk,data[0].parts[1].parts[i].range['end']-data[0].parts[1].parts[i].range['start']+1);
+			typeName = data[0].parts[1].parts[i].type_name;
+			html.push('<div class="box02_1 w150 h30 box02_2 ' + Class + '"style="width:' + percent + '%">');
+			html.push(typeName + '</div>');
+		}
+		html.push("</div>");
+		Dom.innerHTML = html.join('');
+		console.log(html.join(''));
+		console.log(Dom.innerHTML);
+	},
+	getPercent : function (sum, num) { //获取百分比的函数
+		function a(sum, num) {
+			return (Math.round((num / sum) * 100));
+		}
+	}
+	
+}
+/*function fillHtmlByData(data, Dom) {
 	var html = [],Class,percent,typeName;
 	html.push('<div class="box02_1 red j_diskPart" style="width:' + data[0].parts[0].range_percent + '">' + data[0].parts[0]._comment_1 + '</div>');
 	html.push('<div class="box02_1 green w500" style="width:' + data[0].parts[1].range_percent + '">');
@@ -39,7 +74,7 @@ function fillHtmlByData(data, Dom) {
 	Dom.innerHTML = html.join('');
 	console.log(html.join(''));
 	console.log(Dom.innerHTML);
-}
+}*/
 $("#dialog-message" ).dialog({
 			autoOpen:false,
 			modal: true,
