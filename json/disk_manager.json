@@ -28,7 +28,7 @@
                 "fstype": "fat32",
                 "fstype_comment": "分区文件系统格式, 对'扩展分区'和'空白区域'忽略这个字段",
                 "size": {
-                    "total": 4000000,
+                    "total": 3000000,
                     "total_comment": "分区总大小",
                     "left": 3755,
                     "left_comment": "剩余空间"
@@ -102,13 +102,13 @@
                         "_comment_2": "逻辑分区2",
                         "dev": "/dev/sda6",
                         "num": 6,
-                        "type": "logical",
-                        "type_name": "逻辑分区",
+                        "type": "empty",
+                        "type_name": "空白分区",
                         "mountpoint": "/tmp/sda6",
-                        "fstype": "fat32",
+                        "fstype": " ",
                         "size": {
                             "total": 4000000,
-                            "left": 3755
+                            "left": 4000000
                         },
                         "range": {
                             "start": 131,

@@ -55,14 +55,14 @@ var wycFun = {
 						percent = this.getPercent(diskExtenedSum, data.parts[k].parts[i].range['end'] - data.parts[k].parts[i].range['start'] + 1);
 						percent = percent - 1; //少1像素的区域留给边框
 						typeName = data.parts[k].parts[i].type_name;
-						html_extened.push('<div class="box02_1 w150 h30 box02_2 ' + Class + '"style="width:' + percent + '%"dataindex=resultData['+Num+'].parts[' + k + '].parts[' + i + '] boolClick="true">');
+						html_extened.push('<div class="box02_1 w150 h30 box02_2 ' + Class + '"style="width:' + percent + '%"dataindex=resultData['+Num+'].parts[' + k + '].parts[' + i + '] boolClick="1">');
 						html_extened.push(typeName + data.parts[k].parts[i].num + '</div>');
 					}
 					break;
 				case 'primary': // 主分区
 					percent = this.getPercent(diskSumNum, data.parts[k].range['end'] - data.parts[k].range['start'] + 1);
 					percent = percent - 1;
-					html_primary.push('<div class="box02_1 red j_diskPart" style="width:' + percent + '%"dataindex =resultData['+Num+'].parts[' + k + '] boolClick="true">' + data.parts[k].type_name + data.parts[k].num + '</div>');
+					html_primary.push('<div class="box02_1 red j_diskPart" style="width:' + percent + '%"dataindex =resultData['+Num+'].parts[' + k + '] boolClick="1">' + data.parts[k].type_name + data.parts[k].num + '</div>');
 					break;
 				default:
 					break;
@@ -86,7 +86,8 @@ var wycFun = {
 		html_table.push(data.size.left)
 		html_table.push('</td></tr></tbody></table>');
 		dom.innerHTML = html_table.join('');
-	}	
+	},
+	
 }//读取函数完毕		
 $("#dialog-message" ).dialog({
 			autoOpen:false,
@@ -144,19 +145,35 @@ $(".j_diskPart").toggle(function(){
 },function(){$("#diskFormat").hide();}
 );
 //下面写点击事件的处理
-$('#diskinfo01').bind('click',function(event){
-	
-	e = event||window.event;
-	var target = event.target ||event.srcElement;
-	var dataindex = target.getAttribute('dataindex');
-	if(dataindex){
-	console.log(dataindex);
-	 dataindex = eval(dataindex);
-	//console.log(dataindex.dev);
-	wycFun.fillDataTotable(dataindex,$("#diskInfoTable")[0]);
-	$("#diskFormat").show();
+$('.myspanclose').bind('click',function(){//为自己写的关闭的按钮的关闭事件
+$(this).parent().hide();
+});
+$('#diskinfo01').bind('click',function(event){	
+	e = event || window.event;
+	var target = event.target || event.srcElement;
+	var dataindex_str = target.getAttribute('dataindex');
+	if (dataindex_str) {
+
+		var dataindex_obj = eval(dataindex_str);
+		//console.log(dataindex.dev);
+		wycFun.fillDataTotable(dataindex_obj, $("#diskInfoTable")[0]);
+		$("#diskFormat").show();
+		switch (dataindex_obj.type) {
+		case 'primary':
+		case 'logical':
+			$("#diskOperate").show().attr('diskData',dataindex_str);
+			$('#diskempty').hide();
+			break;
+		case 'empty':
+		$('#diskempty').show().attr('diskData',dataindex_str);
+		$("#diskOperate").hide();
+			break;
+		default:
+			break;
+		}
 	}
 });
+//下面写各个按钮的点击事件
 
 
 

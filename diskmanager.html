@@ -1,8 +1,10 @@
 ﻿<!DOCTYPE HTML>
 <head>
 <title>磁盘管理</title>
-<link rel="stylesheet" href="development-bundle/themes/base/jquery.ui.all.css">
-	<link rel="stylesheet" href="mycss/demos.css">
+<link type="text/css" href="css/custom-theme/jquery-ui-1.8.5.custom.css" rel="stylesheet" />	
+<link rel="stylesheet" href="development-bundle/themes/base/jquery.ui.all.css"rel="stylesheet" />	
+	<link rel="stylesheet" href="mycss/demos.css"rel="stylesheet" />
+	<link rel="stylesheet" href="development-bundle/themes/base/jquery.ui.dialog.css"rel="stylesheet" />	
 	<link rel="stylesheet" href="mycss/diskmanger.css" type="text/css"/>
 </head>
 <body>
@@ -17,6 +19,7 @@
 	<div class="box02_1 green w500"><div class="box02_1 yellow w150 h30 box02_2 j_diskPart">逻辑分区1</div><div class="w150 box02_1 block h30 box02_2 j_diskSpace">空白区域</div><div class="yellow2 box02_1 w150 h30 box02_2 j_diskPart">逻辑分区2</div> </div>-->
 	</div>
 	<div class="diskinfo" id="diskFormat" style="display:none">
+	
 	<h3 class="title03 none">详情:<hr/></h3>
 	<div class="diskinfo_box" id="diskInfoTable">
 		<!--<table class="table1"><tbody>
@@ -35,13 +38,17 @@
 		</tbody></table>-->
 	</div>
 	<h3 class="title03 none">操作:<hr/></h3>
-	<div class="itembtn">
-	<div class="btn1" id="diskCheckBtn">磁盘检查</div>
-	<div class="btn2 btn1" id="diskFormatbtn">格式化</div>
-	<div class="btn3 btn1" id="deleteBtn">删除</div>
+	<div class="itembtn" id="diskOperate" style="display:none">
+	<button id="diskCheckBtn"class="btn1 ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text">磁盘检查</span></button>
+	<button id="diskFormatbtn"class="btn2 btn1 ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text">格式化</span></button>
+	<button id="deleteBtn"class="btn3 btn1 ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text">删除</span></button>
 	</div>
+	<div class="itembtn" id="diskempty" style="display:none">
+	<button id="createPart" class=" btn1 ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text">创建分区</span></button>
 	</div>
-	<div class="diskinfo" id="diskNone" style="display:none">
+	<span class="ui-icon ui-icon-closethick myspanclose">close</span>
+	</div>
+	<!--<div class="diskinfo" id="diskNone" style="display:none">
 	<h3 class="title03 none">详情:<hr/></h3>
 	<div class="diskinfo_box">
 		<table class="table1"><tbody>
@@ -63,7 +70,7 @@
 	<div class="itembtn">
 	<div class="btn1">创建分区</div>
 	</div>
-	</div>
+	</div>-->
 	</div>
 	<div class="disk2">
 	<h2 class="title01 none ">磁盘2<span class="box01 font14">主分区<span class="redBorder rect"></span >扩展分区<span class="greenBorder rect"></span>逻辑分区<span class="yellowBorder rect"></span></span></h2>

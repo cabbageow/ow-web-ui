@@ -21,7 +21,7 @@ body{font-family:Microsoft YaHei,"Times New Roman",Georgia,Serif;;}
 .font14{font-size:14px;font-weight:700}
 .inlineBlock{display:inline-block;}
 .box02{height:50px;text-align:center;}
-.box02_1{float:left;height:50px;text-align:center;line-height:50px;border:2px solid #1e1f25;vertical-align:center;}
+.box02_1{float:left;height:50px;text-align:center;line-height:50px;border:2px solid #1e1f25;vertical-align:center;cursor:pointer;}
 .w500{width:500px;}
 .w100{width:100px;}
 .w150{width:150px;}
@@ -31,13 +31,13 @@ body{font-family:Microsoft YaHei,"Times New Roman",Georgia,Serif;;}
 .clearfix:after{visibility:hidden;display:block;height:0;font-size:0;clear:both;}
 *:first-child+html .clearfix { zoom: 1;}
 .disk2{margin-top:40px;}
-.diskinfo{border:2px solid #1e1f25;height:400px;margin-top:20px;}
+.diskinfo{border:2px solid #1e1f25;height:400px;margin-top:20px;position:relative;}
 .title03{margin:15px;}
 .table1 {width:500px;margin: 0 auto;text-align:left;border-spacing: 0px 20px;}
 th{height:50px;}
 .td1{width:100px;}
 .itembtn{position:relative;height:80px;}
-.btn1{height:25px;width:120px;text-align:center;line-height:25px;margin:-top:10px;left:60px;top:0;border:1px solid #1e1f25;position:absolute;
-cursor:pointer;}
+.btn1{left:60px;top:0;position:absolute;width:95px;}
 .btn2{left:315px;}
-.btn3{top:35px;}
+.btn3{top:55px;}
+.myspanclose{position:absolute;right:3px;top:5px;cursor: pointer;}
