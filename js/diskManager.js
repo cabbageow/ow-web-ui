@@ -7,13 +7,14 @@ var requestURL = {
 	disk_part_delete : "json/disk_part_delete.json",
 	disk_part_format : "json/disk_part_format.json"
 };
-var resultData = {}
+
+var resultData = {};
 $.get(requestURL.disk_manager,
 	function (data) {
 	resultData = eval(data);
 	//console.log(resultData);
 	wycFun.fillColorHtmlByData(resultData[0],$("#diskinfo01")[0],0);
-});
+},"json");
 var wycFun = {
 	getPercent : function (sum, num) { //获取百分比的函数
 			return (Math.round((num / sum) * 100));
@@ -87,16 +88,69 @@ var wycFun = {
 		html_table.push('</td></tr></tbody></table>');
 		dom.innerHTML = html_table.join('');
 	},
+	/*点击确认按钮弹出操作完成的窗口的方法,参数分别为：ajax返回的数据,应该返回的正确的数据,
+	对应的数据弹窗的标题[righttitle，othertitle]第一个对应正确的数据应该显示的标题，第二个非正确数据应该显示的标题,窗口的宽度和高度*/
+	affirmBtnEnter:function(datas,rightData,titles,width,height){	
+				var getData = eval(datas);
+				var okBtn = $("#okbtn");
+				
+				switch (getData.result.result) {
+				case 'ok':
+						okBtn.html('<p class="marginAuto"><strong>'+titles[0]+'</strong></p>')
+					okBtn.dialog({ //弹出完成的按钮
+						autoOpen : false,
+						title : titles[0],
+						modal : true,
+						width:width,
+						height:height,
+						minWidth:100,
+						minHeight:100,
+						buttons : {
+							"确认" : function () {
+								$(this).dialog("close");
+							}
+						}
+					});
+					okBtn.dialog("open");
+					break;
+				default:
+					okBtn.dialog({ //弹出完成的按钮
+						autoOpen : false,
+						title : title[1],
+						modal : true,
+						width:width,
+						height:height,
+						minWidth:100,
+						minHeight:100,
+						buttons : {
+							"确认" : function () {
+								$(this).dialog("close");
+							}
+						}
+					});
+					okBtn.dialog("open");
+					break;
+				}
+	}
 	
-}//读取函数完毕		
+}//通用函数完毕		
 $("#dialog-message" ).dialog({
 			autoOpen:false,
 			modal: true,
 			title:"确认删除？",
 			buttons: {
 				"确认":function() {
-					$( this ).dialog( "close" );
-					alert("删除成功");
+			var dataIndex = $("#diskOperate").attr('diskdata');			
+			dataIndex = eval(dataIndex);			
+			$.get(requestURL.disk_part_delete, {
+				dev : dataIndex.dev,
+				num : dataIndex.num,
+			},
+				function (data) {
+				wycFun.affirmBtnEnter(data,'ok',['删除成功','删除失败'],150,110);
+			}, "json");
+				
+					$(this).dialog( "close" );
 				}
 			},
 		});
@@ -106,44 +160,99 @@ $( "#diskCheckMess" ).dialog({
 			title:"检查磁盘",
 			buttons: {
 				"取消": function() {
-					$( this ).dialog( "close" );
-					alert("取消成功");
+				clearTime(timeNum);
+					$(this).dialog( "close" );
+					
 				}
 			},
 		});	
 $("#diskFarmating").dialog({
-	autoOpen:false,
-	title:"格式化:",
-	modal:true,
-	buttons:{
-	"确认":function(){
-		$(this).dialog("close");
-		alert("格式化成功");
-	},
-	"取消":function(){
-	$(this).dialog("close");
+	autoOpen : false,
+	title : "格式化:",
+	modal : true,
+	buttons : {
+		"确认" : function () {
+			var formatType = $("#diskFarmating option:selected").val();			
+			var dataIndex = $("#diskOperate").attr('diskdata');			
+			dataIndex = eval(dataIndex);			
+			$.get(requestURL.disk_part_format, {
+				dev : dataIndex.dev,
+				num : dataIndex.num,
+				fstype : formatType
+			},
+				function (data) {
+				wycFun.affirmBtnEnter(data,'ok',['格式化成功','格式化失败'],150,110);
+			}, "json");
+			
+			$(this).dialog("close");
+		},
+		"取消" : function () {
+			$(this).dialog("close");
+		}
 	}
-}
 });
+
+$( "#diskPartCreate" ).dialog({
+	autoOpen : false,
+	title : "创建分区:",
+	modal : true,
+	buttons : {
+		"确认":function(){
+			var formatType = $("#diskPartCreate option:selected").val();	
+			var diskSize = $("#diskPartCreate input").val();
+			alert(diskSize);
+			var dataIndex = $("#diskempty").attr('diskdata');			
+			dataIndex = eval(dataIndex);			
+			$.get(requestURL.disk_part_create, {
+				dev : dataIndex.dev,
+				num : dataIndex.num,
+				fstype : formatType,
+				size:diskSize
+			},
+				function (data) {
+				wycFun.affirmBtnEnter(data,'ok',['创建成功','创建失败'],150,110);
+			}, "json");
+		$(this).dialog("close");
+		},
+		"取消":function(){
+			$(this).dialog("close");
+		}
+	}
+});
+
 $("#diskFormatbtn").bind("click",function(){
 	$("#diskFarmating").dialog("open");
 });
 $("#deleteBtn").bind("click",function(){
 	$("#dialog-message" ).dialog("open");
 	});
-$("#diskCheckBtn").bind("click",function(){
-	$( "#diskCheckMess" ).dialog("open");
+$("#diskCheckBtn").bind("click",function(){//检查磁盘的操作
+	var checkLoading = $('#checkLoading');
+	checkLoading.css('width',"1%");
+	var dataIndex = $("#diskOperate").attr('diskdata');
+	var timeNum = null;
+	function timeSet(){
+		$.get(requestURL.disk_part_check, {
+				dev : dataIndex.dev,
+				num : dataIndex.num,
+			},
+				function (data) {
+				var getData = eval(data);
+				if(getData.result.process<=100&&getData.result.process>=0){
+				checkLoading.css('width',getData.result.process+'%');
+				timeNum =setTimeout(timeSet,1000);
+				}else{
+				clearTime(timeNum);
+				}
+			}, "json");
+	}
+	timeSet();
+			$( "#diskCheckMess" ).dialog("open");
 });
-$(".j_diskSpace").toggle(function(){
-	$("#diskNone").show();	
-},function(){
-	$("#diskNone").hide();
+$("#createPartBtn").bind("click",function(){
+//创建分区按钮
+$( "#diskPartCreate" ).dialog("open");
 });
-$(".j_diskPart").toggle(function(){
-	$("#diskFormat").show();
-	
-},function(){$("#diskFormat").hide();}
-);
 //下面写点击事件的处理
 $('.myspanclose').bind('click',function(){//为自己写的关闭的按钮的关闭事件
 $(this).parent().hide();
@@ -173,7 +282,7 @@ $('#diskinfo01').bind('click',function(event){
 		}
 	}
 });
-//下面写各个按钮的点击事件
+
 
 
 

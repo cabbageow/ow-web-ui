@@ -4,7 +4,6 @@
 <link type="text/css" href="css/custom-theme/jquery-ui-1.8.5.custom.css" rel="stylesheet" />	
 <link rel="stylesheet" href="development-bundle/themes/base/jquery.ui.all.css"rel="stylesheet" />	
 	<link rel="stylesheet" href="mycss/demos.css"rel="stylesheet" />
-	<link rel="stylesheet" href="development-bundle/themes/base/jquery.ui.dialog.css"rel="stylesheet" />	
 	<link rel="stylesheet" href="mycss/diskmanger.css" type="text/css"/>
 </head>
 <body>
@@ -44,7 +43,7 @@
 	<button id="deleteBtn"class="btn3 btn1 ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text">删除</span></button>
 	</div>
 	<div class="itembtn" id="diskempty" style="display:none">
-	<button id="createPart" class=" btn1 ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text">创建分区</span></button>
+	<button id="createPartBtn" class=" btn1 ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text">创建分区</span></button>
 	</div>
 	<span class="ui-icon ui-icon-closethick myspanclose">close</span>
 	</div>
@@ -80,27 +79,38 @@
 	
 </div>
 </div>
-<div id="dialog-message" title="Download complete" style="display:none">
+<div id="dialog-message" title="删除分区" style="display:none">
 	<p>
 		<span class="ui-icon ui-icon-circle-check" style="float:left; margin:0 7px 50px 0;"></span>
 		删除分区会丢失次分区上的所有数据,<br/>
 		确定要删除么？
 	</p>
 </div>
-<div id="diskCheckMess" title="Download complete" style="display:none">
+<div id="diskCheckMess" title="磁盘检查" style="display:none">
 	<p>
-		进度<div class="checkInfo green" style="float:left; margin:0 7px 50px 0;height:20px;width:100px;"></div>
+		进度</p><div style=" margin:7px 0px 0;height:20px; border:1px solid #cccccc;"><div class="checkInfo green" id="checkLoading"></div></div>
 		
-	</p>
+	
 </div>
-<div id="diskFarmating" title="Download complete" style="display:none">
+<div id="diskFarmating" title="格式化" style="display:none">
 	<p>
-		文件系统<select>
+		文件系统<select class="textSelect">
 		<option name="ntfs">NTFS</option>
 		<option name="fat32">FAT32</option>
 	</select>
 		
 	</p>
+</div>
+<div id="diskPartCreate" title="创建分区" style="display:none">
+	<p>分区大小<input type="text" class="textInput"/>M</p>
+	<p>
+		文件系统<select class="textSelect">
+		<option name="ntfs">NTFS</option>
+		<option name="fat32">FAT32</option>
+	</select>		
+	</p>
+</div>
+<div id="okbtn" title="Download complete" style="display:none">
 </div>
 <script src="js/jquery-1.4.2.min.js" type="text/javascript"type="text/javascript"></script>
 	<script src="development-bundle/external/jquery.bgiframe-2.1.2.js" type="text/javascript"> </script>

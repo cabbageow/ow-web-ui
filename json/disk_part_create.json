@@ -5,7 +5,8 @@
 		"num":2, 
 		"num_comment":"用来标记是对硬盘哪个空白区域进行操作",
 		"size":200, 
-		"size_comment":"新创建分区的大小，单位M"
+		"size_comment":"新创建分区的大小，单位M",
+		"fstype":"ntfs"
 	},
 	"result":{
 		"result":"ok",
