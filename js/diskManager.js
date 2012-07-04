@@ -7,13 +7,25 @@ var requestURL = {
 	disk_part_delete : "json/disk_part_delete.json",
 	disk_part_format : "json/disk_part_format.json"
 };
-
-var resultData = {};
+var resultData = {},wycVal = {
+	timeNum1:null
+};
 $.get(requestURL.disk_manager,
 	function (data) {
 	resultData = eval(data);
 	//console.log(resultData);
-	wycFun.fillColorHtmlByData(resultData[0],$("#diskinfo01")[0],0);
+	var diskDom = $('#diskList'),htmlDiv='';
+	for(var i = 0; i <resultData.length;i++){
+	//var diskDom = $(diskDoms[i]);
+	htmlDiv +='<div class="j_disk clearfix disk" clickNum = "'+i+'">';
+	var htmlDiv_temp = wycFun.fillColorHtmlByData(resultData[i],i);
+	htmlDiv += wycFun.initFillDiskInfor(htmlDiv_temp,resultData[i]);
+	console.log(htmlDiv);
+	htmlDiv +='</div>';
+	
+	}
+	
+	diskDom.html(htmlDiv);
 },"json");
 var wycFun = {
 	getPercent : function (sum, num) { //获取百分比的函数
@@ -28,19 +40,23 @@ var wycFun = {
 		}
 		return num;
 	}*/
-	fillColorHtmlByData : function (data, Dom, Num) { //填充图像颜色,硬盘数据对象，对应的dom元素，硬盘数据对象的索引号
+	fillColorHtmlByData : function (data, Num) { //填充图像颜色,硬盘数据对象，对应的dom元素，硬盘数据对象的索引号
 		var Class,
-		percent,
-		typeName,
+		percent,percentExtened,
+		typeName,boolExtened = 0,
 		html_primary = [],
 		html_extened = [];
 		var diskSumNum = data.range['end'];
 		var diskExtenedSum = data.extened_range_sum;
-		percent = this.getPercent(diskSumNum, diskExtenedSum) -1;
-		html_extened.push('<div class="box02_1 green w500" style="width:' + percent + '%">');
+		percentExtened = this.getPercent(diskSumNum, diskExtenedSum) -1;
+		
 			for (var k = 0; k < data.parts.length; k++) {
 				switch (data.parts[k].type) {
 				case 'extened': //逻辑分区
+				if(boolExtened ==0){
+					boolExtened = 1;
+					html_extened.push('<div class="box02_1 green w500" style="width:' + percentExtened + '%">');
+				}
 					for (var i = 0; i < data.parts[k].parts.length; i++) {
 						switch (data.parts[k].parts[i].type) {
 						case "logical": //逻辑分区
@@ -56,7 +72,7 @@ var wycFun = {
 						percent = this.getPercent(diskExtenedSum, data.parts[k].parts[i].range['end'] - data.parts[k].parts[i].range['start'] + 1);
 						percent = percent - 1; //少1像素的区域留给边框
 						typeName = data.parts[k].parts[i].type_name;
-						html_extened.push('<div class="box02_1 w150 h30 box02_2 ' + Class + '"style="width:' + percent + '%"dataindex=resultData['+Num+'].parts[' + k + '].parts[' + i + '] boolClick="1">');
+						html_extened.push('<div class="box02_1 w150 h30 box02_2 ' + Class + '"style="width:' + percent + '%"dataindex="resultData['+Num+'].parts[' + k + '].parts[' + i + ']" boolClick="1">');
 						html_extened.push(typeName + data.parts[k].parts[i].num + '</div>');
 					}
 					break;
@@ -70,7 +86,7 @@ var wycFun = {
 				}
 			}
 				html_extened.push("</div>");
-				Dom.innerHTML = html_primary.join('') + html_extened.join('');
+				return html_primary.join('') + html_extened.join('');
 			},
 	fillDataTotable:function(data,dom){
 		var html_table = ['<table class="table1"><tbody><tr><td class="td1">分区类型:</td><td>'];
@@ -86,7 +102,25 @@ var wycFun = {
 		html_table.push('</td><td class="td1">剩余空间:</td><td>');
 		html_table.push(data.size.left)
 		html_table.push('</td></tr></tbody></table>');
-		dom.innerHTML = html_table.join('');
+		dom.html(html_table.join(''));
+	},
+	initFillDiskInfor:function(colorHtml,data){//初始化填充磁盘信息模块html
+		var html = [];
+		html.push('<h2 class="title01 none ">'+data._comment+'<span class="box01 font14">主分区<span class="redBorder rect"></span >');
+		html.push('扩展分区<span class="greenBorder rect"></span>逻辑分区<span class="yellowBorder rect"></span></span></h2><hr/>');
+		html.push('<div class="box02 j_diskinfo">'+colorHtml+'</div>');
+		html.push('<div class="diskinfo j_diskFormat" style="display:none">');
+		html.push('<h3 class="title03 none">详情:<hr/></h3>');		
+		html.push('<div class="diskinfo_box j_diskInfoTable"></div>');
+		html.push('<h3 class="title03 none">操作:<hr/></h3>');
+		html.push('<div class="itembtn j_diskOperate" style="display:none">');
+		html.push('<button class="btn1 ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only j_diskCheckBtn" role="button" aria-disabled="false"><span class="ui-button-text">磁盘检查</span></button>');
+		html.push('<button class="btn2 btn1 ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only j_diskFormatbtn" role="button" aria-disabled="false"><span class="ui-button-text">格式化</span></button>');
+		html.push('<button class="btn3 btn1 ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only j_deleteBtn" role="button" aria-disabled="false"><span class="ui-button-text">删除</span></button>');
+		html.push('</div><div class="itembtn j_diskempty"  style="display:none">');
+		html.push('<button class=" btn1 ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only j_createPartBtn" role="button" aria-disabled="false"><span class="ui-button-text">创建分区</span></button>');
+		html.push('</div><span class="ui-icon ui-icon-closethick myspanclose">close</span></div>');		
+		return html.join('');
 	},
 	/*点击确认按钮弹出操作完成的窗口的方法,参数分别为：ajax返回的数据,应该返回的正确的数据,
 	对应的数据弹窗的标题[righttitle，othertitle]第一个对应正确的数据应该显示的标题，第二个非正确数据应该显示的标题,窗口的宽度和高度*/
@@ -96,27 +130,18 @@ var wycFun = {
 				
 				switch (getData.result.result) {
 				case 'ok':
-						okBtn.html('<p class="marginAuto"><strong>'+titles[0]+'</strong></p>')
-					okBtn.dialog({ //弹出完成的按钮
-						autoOpen : false,
-						title : titles[0],
-						modal : true,
-						width:width,
-						height:height,
-						minWidth:100,
-						minHeight:100,
-						buttons : {
-							"确认" : function () {
-								$(this).dialog("close");
-							}
-						}
-					});
-					okBtn.dialog("open");
+					this.btnMess(okBtn,titles[0],width,height);
 					break;
 				default:
-					okBtn.dialog({ //弹出完成的按钮
+					this.btnMess(okBtn,titles[1],width,height);
+					break;
+				}
+	},
+	btnMess:function(j_btn,title,width,height){
+		j_btn.html('<p class="marginAuto"><strong>'+title+'</strong></p>')
+					j_btn.dialog({ //弹出窗口
 						autoOpen : false,
-						title : title[1],
+						title : title,
 						modal : true,
 						width:width,
 						height:height,
@@ -128,9 +153,7 @@ var wycFun = {
 							}
 						}
 					});
-					okBtn.dialog("open");
-					break;
-				}
+					j_btn.dialog("open");
 	}
 	
 }//通用函数完毕		
@@ -147,7 +170,7 @@ $("#dialog-message" ).dialog({
 				num : dataIndex.num,
 			},
 				function (data) {
-				wycFun.affirmBtnEnter(data,'ok',['删除成功','删除失败'],150,110);
+				wycFun.affirmBtnEnter(data,'ok',['删除成功','删除失败'],150,112);
 			}, "json");
 				
 					$(this).dialog( "close" );
@@ -160,11 +183,14 @@ $( "#diskCheckMess" ).dialog({
 			title:"检查磁盘",
 			buttons: {
 				"取消": function() {
-				clearTime(timeNum);
+				clearTimeout(wycVal.timeNum);
 					$(this).dialog( "close" );
 					
 				}
 			},
+		close:function(){
+			clearTimeout(wycVal.timeNum);
+		}		
 		});	
 $("#diskFarmating").dialog({
 	autoOpen : false,
@@ -181,7 +207,7 @@ $("#diskFarmating").dialog({
 				fstype : formatType
 			},
 				function (data) {
-				wycFun.affirmBtnEnter(data,'ok',['格式化成功','格式化失败'],150,110);
+				wycFun.affirmBtnEnter(data,'ok',['格式化成功','格式化失败'],150,112);
 			}, "json");
 			
 			$(this).dialog("close");
@@ -210,7 +236,7 @@ $( "#diskPartCreate" ).dialog({
 				size:diskSize
 			},
 				function (data) {
-				wycFun.affirmBtnEnter(data,'ok',['创建成功','创建失败'],150,110);
+				wycFun.affirmBtnEnter(data,'ok',['创建成功','创建失败'],150,112);
 			}, "json");
 		$(this).dialog("close");
 		},
@@ -220,17 +246,16 @@ $( "#diskPartCreate" ).dialog({
 	}
 });
 
-$("#diskFormatbtn").bind("click",function(){
+$(".j_diskFormatbtn").live("click",function(){
 	$("#diskFarmating").dialog("open");
 });
-$("#deleteBtn").bind("click",function(){
-	$("#dialog-message" ).dialog("open");
+$(".j_deleteBtn").live("click",function(){
+	$("#dialog-delete").dialog("open");
 	});
-$("#diskCheckBtn").bind("click",function(){//检查磁盘的操作
+$(".j_diskCheckBtn").live("click",function(){//检查磁盘的操作
 	var checkLoading = $('#checkLoading');
 	checkLoading.css('width',"1%");
 	var dataIndex = $("#diskOperate").attr('diskdata');
-	var timeNum = null;
 	function timeSet(){
 		$.get(requestURL.disk_part_check, {
 				dev : dataIndex.dev,
@@ -240,42 +265,47 @@ $("#diskCheckBtn").bind("click",function(){//检查磁盘的操作
 				var getData = eval(data);
 				if(getData.result.process<=100&&getData.result.process>=0){
 				checkLoading.css('width',getData.result.process+'%');
-				timeNum =setTimeout(timeSet,1000);
+				wycVal.timeNum =setTimeout(timeSet,1000);
 				}else{
-				clearTime(timeNum);
+				clearTimeout(wycVal.timeNum);
+				wycFun.btnMess(okBtn,'返回数据错误:'+getData.result.process,width,height);
+				
 				}
 			}, "json");
 	}
 	timeSet();
 			$( "#diskCheckMess" ).dialog("open");
 });
-$("#createPartBtn").bind("click",function(){
+$(".j_createPartBtn").bind("click",function(){
 //创建分区按钮
-$( "#diskPartCreate" ).dialog("open");
+$( ".j_diskPartCreate" ).dialog("open");
 });
 //下面写点击事件的处理
 $('.myspanclose').bind('click',function(){//为自己写的关闭的按钮的关闭事件
 $(this).parent().hide();
 });
-$('#diskinfo01').bind('click',function(event){	
+
+$('.j_disk').live('click',function(event){	
 	e = event || window.event;
 	var target = event.target || event.srcElement;
 	var dataindex_str = target.getAttribute('dataindex');
 	if (dataindex_str) {
-
 		var dataindex_obj = eval(dataindex_str);
 		//console.log(dataindex.dev);
-		wycFun.fillDataTotable(dataindex_obj, $("#diskInfoTable")[0]);
-		$("#diskFormat").show();
+		//alert($(this).find(".j_diskInfoTable").innerHTML);
+		var temp = $(this).find(".j_diskInfoTable");
+		wycFun.fillDataTotable(dataindex_obj,temp);
+		$(this).find(".j_diskFormat").show();
+		console.log($(this).find(".j_diskInfoTable"));
 		switch (dataindex_obj.type) {
 		case 'primary':
 		case 'logical':
-			$("#diskOperate").show().attr('diskData',dataindex_str);
-			$('#diskempty').hide();
+			$(this).find(".j_diskOperate").show().attr('diskData',dataindex_str);
+			$(this).find(".j_diskempty").hide();
 			break;
 		case 'empty':
-		$('#diskempty').show().attr('diskData',dataindex_str);
-		$("#diskOperate").hide();
+		$(this).find('.j_diskempty').show().attr('diskData',dataindex_str);
+		$(this).find(".j_diskOperate").hide();
 			break;
 		default:
 			break;

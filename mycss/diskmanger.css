@@ -1,6 +1,6 @@
 ﻿@charset "utf-8"
 body{font-family:Microsoft YaHei,"Times New Roman",Georgia,Serif;;}
-.main{border:1px solid #094598;padding:49px;}
+.main{border:1px solid #094598;padding:0 49px 49px 49px;}
 .wrap{margin:0 auto;width:960px;padding:10px;}
 .none{margin:0;padding:0;}
 .title{font-size:18px;font-weight:700;height:25px;line-height:25px;display:inline-block;background-color:#cccccc}
@@ -30,7 +30,7 @@ body{font-family:Microsoft YaHei,"Times New Roman",Georgia,Serif;;}
 .box02_2{margin:10px 0px;}
 .clearfix:after{visibility:hidden;display:block;height:0;font-size:0;clear:both;}
 *:first-child+html .clearfix { zoom: 1;}
-.disk2{margin-top:40px;}
+.disk{margin-top:40px;}
 .diskinfo{border:2px solid #1e1f25;margin-top:20px;position:relative;}
 .title03{margin:15px;}
 .table1 {width:500px;margin: 0 auto;text-align:left;border-spacing: 0px 20px;}
@@ -41,7 +41,7 @@ th{height:50px;}
 .btn2{left:315px;}
 .btn3{top:55px;}
 .myspanclose{position:absolute;right:3px;top:5px;cursor: pointer;}
-.marginAuto{margin-left:auto;margin-right:auto;text-align:center;}
+.marginAuto{margin:2px auto 0;text-align:center;font-size:14px;}
 .textInput{width:60px;margin:0 5px;}
 .textSelect{width:65px;margin:0 5px;}
 .checkInfo{width:1%;height:100%;}

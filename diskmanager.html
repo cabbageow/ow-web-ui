@@ -9,32 +9,16 @@
 <body>
 <div class="wrap font14">
 <h1 class="title none">磁盘管理</h1>
-<div class="main">
-	<div class="disk1 clearfix">
+<div class="main" id="diskList">
+	<!--<div class="j_disk clearfix" clickNum = "0">
 	<h2 class="title01 none ">磁盘1<span class="box01 font14">主分区<span class="redBorder rect"></span >扩展分区<span class="greenBorder rect"></span>逻辑分区<span class="yellowBorder rect"></span></span></h2>
 	<hr/>
-	<div class="box02" id="diskinfo01"><!--<div class="box02_1 red j_diskPart" >主分区</div>
-	<div class="w100 box02_1 block j_diskSpace" >空白区域</div>
-	<div class="box02_1 green w500"><div class="box02_1 yellow w150 h30 box02_2 j_diskPart">逻辑分区1</div><div class="w150 box02_1 block h30 box02_2 j_diskSpace">空白区域</div><div class="yellow2 box02_1 w150 h30 box02_2 j_diskPart">逻辑分区2</div> </div>-->
-	</div>
+	<div class="box02" id="diskinfo01"></div>
 	<div class="diskinfo" id="diskFormat" style="display:none">
 	
 	<h3 class="title03 none">详情:<hr/></h3>
 	<div class="diskinfo_box" id="diskInfoTable">
-		<!--<table class="table1"><tbody>
-			<tr>
-			<td class="td1">分区类型:</td><td>主分区</td>
-			<td class="td1">设备:</td><td>/DEV/sda1</td>
-			</tr>
-			<tr>
-			<td class="td1">文件系统:</td><td>NTFS</td>
-			<td class="td1">挂载点:</td><td>/DEV/sda1</td>
-			</tr>
-			<tr>
-			<td class="td1">容量:</td><td>20G</td>
-			<td class="td1">剩余空间:</td><td>2.5G</td>
-			</tr>
-		</tbody></table>-->
+
 	</div>
 	<h3 class="title03 none">操作:<hr/></h3>
 	<div class="itembtn" id="diskOperate" style="display:none">
@@ -46,40 +30,17 @@
 	<button id="createPartBtn" class=" btn1 ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text">创建分区</span></button>
 	</div>
 	<span class="ui-icon ui-icon-closethick myspanclose">close</span>
+	</div>	
 	</div>
-	<!--<div class="diskinfo" id="diskNone" style="display:none">
-	<h3 class="title03 none">详情:<hr/></h3>
-	<div class="diskinfo_box">
-		<table class="table1"><tbody>
-			<tr>
-			<td class="td1">分区类型:</td><td>未分区</td>
-			<td class="td1">设备:</td><td>/DEV/sda1</td>
-			</tr>
-			<tr>
-			<td class="td1">文件系统:</td><td>未格式化</td>
-			<td class="td1">挂载点:</td><td>...</td>
-			</tr>
-			<tr>
-			<td class="td1">容量:</td><td>20G</td>
-			<td class="td1">剩余空间:</td><td> </td>
-			</tr>
-		</tbody></table>
-	</div>
-	<h3 class="title03 none">操作:<hr/></h3>
-	<div class="itembtn">
-	<div class="btn1">创建分区</div>
-	</div>
-	</div>-->
-	</div>
-	<div class="disk2">
+	<div class="disk2 j_disk">
 	<h2 class="title01 none ">磁盘2<span class="box01 font14">主分区<span class="redBorder rect"></span >扩展分区<span class="greenBorder rect"></span>逻辑分区<span class="yellowBorder rect"></span></span></h2>
 	<hr/>
-
-	</div>
 	
+	</div>
+	-->
 </div>
 </div>
-<div id="dialog-message" title="删除分区" style="display:none">
+<div id="dialog-delete" title="删除分区" style="display:none">
 	<p>
 		<span class="ui-icon ui-icon-circle-check" style="float:left; margin:0 7px 50px 0;"></span>
 		删除分区会丢失次分区上的所有数据,<br/>
