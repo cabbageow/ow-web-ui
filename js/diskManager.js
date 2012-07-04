@@ -8,26 +8,27 @@ var requestURL = {
 	disk_part_format : "json/disk_part_format.json"
 };
 var resultData = {},wycVal = {
-	timeNum1:null
+	timeNum1:null,//定时器id号
+	clickNum:null//判断磁盘点击的序号
 };
-$.get(requestURL.disk_manager,
+var wycFun = {
+	initFun:function(){
+	resultData={};
+	wycVal.timeNum1 = null;
+	wycValclickNum=null;
+	$.get(requestURL.disk_manager,
 	function (data) {
 	resultData = eval(data);
-	//console.log(resultData);
 	var diskDom = $('#diskList'),htmlDiv='';
 	for(var i = 0; i <resultData.length;i++){
-	//var diskDom = $(diskDoms[i]);
 	htmlDiv +='<div class="j_disk clearfix disk" clickNum = "'+i+'">';
 	var htmlDiv_temp = wycFun.fillColorHtmlByData(resultData[i],i);
 	htmlDiv += wycFun.initFillDiskInfor(htmlDiv_temp,resultData[i]);
-	console.log(htmlDiv);
-	htmlDiv +='</div>';
-	
-	}
-	
+	htmlDiv +='</div>';	
+	}	
 	diskDom.html(htmlDiv);
 },"json");
-var wycFun = {
+	},
 	getPercent : function (sum, num) { //获取百分比的函数
 			return (Math.round((num / sum) * 100));
 	},
@@ -85,7 +86,9 @@ var wycFun = {
 					break;
 				}
 			}
+			if(boolExtened ==1){
 				html_extened.push("</div>");
+				}
 				return html_primary.join('') + html_extened.join('');
 			},
 	fillDataTotable:function(data,dom){
@@ -150,6 +153,7 @@ var wycFun = {
 						buttons : {
 							"确认" : function () {
 								$(this).dialog("close");
+								wycFun.initFun();
 							}
 						}
 					});
@@ -157,13 +161,15 @@ var wycFun = {
 	}
 	
 }//通用函数完毕		
-$("#dialog-message" ).dialog({
+$("#dialog-delete" ).dialog({
 			autoOpen:false,
 			modal: true,
 			title:"确认删除？",
 			buttons: {
-				"确认":function() {
-			var dataIndex = $("#diskOperate").attr('diskdata');			
+			"确认":function() {
+			if(wycVal.clickNum >=0){
+		var dataIndex = $(".j_diskOperate")[wycVal.clickNum].getAttribute('diskdata');
+		console.log($(".j_diskOperate")[wycVal.clickNum]);
 			dataIndex = eval(dataIndex);			
 			$.get(requestURL.disk_part_delete, {
 				dev : dataIndex.dev,
@@ -172,7 +178,7 @@ $("#dialog-message" ).dialog({
 				function (data) {
 				wycFun.affirmBtnEnter(data,'ok',['删除成功','删除失败'],150,112);
 			}, "json");
-				
+				}
 					$(this).dialog( "close" );
 				}
 			},
@@ -198,8 +204,9 @@ $("#diskFarmating").dialog({
 	modal : true,
 	buttons : {
 		"确认" : function () {
-			var formatType = $("#diskFarmating option:selected").val();			
-			var dataIndex = $("#diskOperate").attr('diskdata');			
+		if(wycVal.clickNum >=0){
+		var dataIndex = $(".j_diskOperate")[wycVal.clickNum].getAttribute('diskdata');
+			var formatType = $($('.j_diskFarmating')[wycVal.clickNum]).find("option:selected").val();					
 			dataIndex = eval(dataIndex);			
 			$.get(requestURL.disk_part_format, {
 				dev : dataIndex.dev,
@@ -209,7 +216,7 @@ $("#diskFarmating").dialog({
 				function (data) {
 				wycFun.affirmBtnEnter(data,'ok',['格式化成功','格式化失败'],150,112);
 			}, "json");
-			
+			}
 			$(this).dialog("close");
 		},
 		"取消" : function () {
@@ -224,10 +231,10 @@ $( "#diskPartCreate" ).dialog({
 	modal : true,
 	buttons : {
 		"确认":function(){
-			var formatType = $("#diskPartCreate option:selected").val();	
-			var diskSize = $("#diskPartCreate input").val();
-			alert(diskSize);
-			var dataIndex = $("#diskempty").attr('diskdata');			
+		if(wycVal.clickNum >=0){		
+			var formatType = $($("#diskPartCreate")[wycVal.clickNum]).find("option:selected").val();	
+			var diskSize = $(this).find("input").val();
+			var dataIndex =$(".j_diskempty")[wycVal.clickNum].getAttribute('diskdata');			
 			dataIndex = eval(dataIndex);			
 			$.get(requestURL.disk_part_create, {
 				dev : dataIndex.dev,
@@ -238,6 +245,7 @@ $( "#diskPartCreate" ).dialog({
 				function (data) {
 				wycFun.affirmBtnEnter(data,'ok',['创建成功','创建失败'],150,112);
 			}, "json");
+			}
 		$(this).dialog("close");
 		},
 		"取消":function(){
@@ -253,10 +261,12 @@ $(".j_deleteBtn").live("click",function(){
 	$("#dialog-delete").dialog("open");
 	});
 $(".j_diskCheckBtn").live("click",function(){//检查磁盘的操作
+if(wycVal.clickNum >=0){		
 	var checkLoading = $('#checkLoading');
 	checkLoading.css('width',"1%");
-	var dataIndex = $("#diskOperate").attr('diskdata');
 	function timeSet(){
+	var dataIndex = $(".j_diskOperate")[wycVal.clickNum].getAttribute('diskdata');
+	dataIndex = eval(dataIndex);
 		$.get(requestURL.disk_part_check, {
 				dev : dataIndex.dev,
 				num : dataIndex.num,
@@ -266,33 +276,35 @@ $(".j_diskCheckBtn").live("click",function(){//检查磁盘的操作
 				if(getData.result.process<=100&&getData.result.process>=0){
 				checkLoading.css('width',getData.result.process+'%');
 				wycVal.timeNum =setTimeout(timeSet,1000);
-				}else{
+				}else if(getData.result.process==100){
 				clearTimeout(wycVal.timeNum);
-				wycFun.btnMess(okBtn,'返回数据错误:'+getData.result.process,width,height);
-				
+				//wycFun.initFun();
+				$( "#diskCheckMess" ).dialog("close");
 				}
 			}, "json");
 	}
 	timeSet();
 			$( "#diskCheckMess" ).dialog("open");
+			}
 });
-$(".j_createPartBtn").bind("click",function(){
+$(".j_createPartBtn").live("click",function(){
 //创建分区按钮
-$( ".j_diskPartCreate" ).dialog("open");
+$("#diskPartCreate").dialog("open");
 });
 //下面写点击事件的处理
-$('.myspanclose').bind('click',function(){//为自己写的关闭的按钮的关闭事件
+$('.myspanclose').live('click',function(){//为自己写的关闭的按钮的关闭事件
 $(this).parent().hide();
 });
 
-$('.j_disk').live('click',function(event){	
-	e = event || window.event;
+$('.j_disk').live('click',function(event){
+	
+	var e = event || window.event;
 	var target = event.target || event.srcElement;
 	var dataindex_str = target.getAttribute('dataindex');
 	if (dataindex_str) {
+	$(".j_diskFormat").hide();
+	wycVal.clickNum = this.getAttribute('clickNum');
 		var dataindex_obj = eval(dataindex_str);
-		//console.log(dataindex.dev);
-		//alert($(this).find(".j_diskInfoTable").innerHTML);
 		var temp = $(this).find(".j_diskInfoTable");
 		wycFun.fillDataTotable(dataindex_obj,temp);
 		$(this).find(".j_diskFormat").show();
@@ -312,7 +324,7 @@ $('.j_disk').live('click',function(event){
 		}
 	}
 });
-
+wycFun.initFun();
 
 
 
