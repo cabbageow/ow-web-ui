@@ -15,7 +15,7 @@ var wycFun = {
 	initFun:function(){
 	resultData={};
 	wycVal.timeNum1 = null;
-	wycValclickNum=null;
+	wycVal.clickNum=null;
 	$.get(requestURL.disk_manager,
 	function (data) {
 	resultData = eval(data);
@@ -113,7 +113,7 @@ var wycFun = {
 		html.push('扩展分区<span class="greenBorder rect"></span>逻辑分区<span class="yellowBorder rect"></span></span></h2><hr/>');
 		html.push('<div class="box02 j_diskinfo">'+colorHtml+'</div>');
 		html.push('<div class="diskinfo j_diskFormat" style="display:none">');
-		html.push('<h3 class="title03 none">详情:<hr/></h3>');		
+		html.push('<h3 class="title03 none ">详情:<span class="j_titleInfo"></span><hr/></h3>');		
 		html.push('<div class="diskinfo_box j_diskInfoTable"></div>');
 		html.push('<h3 class="title03 none">操作:<hr/></h3>');
 		html.push('<div class="itembtn j_diskOperate" style="display:none">');
@@ -129,8 +129,7 @@ var wycFun = {
 	对应的数据弹窗的标题[righttitle，othertitle]第一个对应正确的数据应该显示的标题，第二个非正确数据应该显示的标题,窗口的宽度和高度*/
 	affirmBtnEnter:function(datas,rightData,titles,width,height){	
 				var getData = eval(datas);
-				var okBtn = $("#okbtn");
-				
+				var okBtn = $("#okbtn");				
 				switch (getData.result.result) {
 				case 'ok':
 					this.btnMess(okBtn,titles[0],width,height);
@@ -158,6 +157,10 @@ var wycFun = {
 						}
 					});
 					j_btn.dialog("open");
+	},
+	regDiskNum:function(str){
+		var reg = /^[1-9]+[0-9]*$/;
+		return reg.test(str);
 	}
 	
 }//通用函数完毕		
@@ -175,7 +178,7 @@ $("#dialog-delete" ).dialog({
 				dev : dataIndex.dev,
 				num : dataIndex.num
 			},function(data){
-				wycFun.affirmBtnEnter(data,'ok',['删除成功','删除失败'],150,112);
+				wycFun.affirmBtnEnter(data,'ok',['删除成功','删除失败'],180,132);
 			}, "json");
 				}
 					$(this).dialog( "close" );
@@ -213,7 +216,7 @@ $("#diskFarmating").dialog({
 				fstype : formatType
 			},
 				function (data) {
-				wycFun.affirmBtnEnter(data,'ok',['格式化成功','格式化失败'],150,112);
+				wycFun.affirmBtnEnter(data,'ok',['格式化成功','格式化失败'],180,132);
 			}, "json");
 			}
 			$(this).dialog("close");
@@ -231,8 +234,9 @@ $( "#diskPartCreate" ).dialog({
 	buttons : {
 		"确认":function(){
 		if(wycVal.clickNum >=0){		
-			var formatType = $($("#diskPartCreate")[wycVal.clickNum]).find("option:selected").val();	
+			var formatType = $($("#diskPartCreate")[wycVal.clickNum]).find("option:selected").val();
 			var diskSize = $(this).find("input").val();
+			if(wycFun.regDiskNum(diskSize)){			
 			var dataIndex =$(".j_diskempty")[wycVal.clickNum].getAttribute('diskdata');			
 			dataIndex = eval(dataIndex);			
 			$.get(requestURL.disk_part_create, {
@@ -242,14 +246,23 @@ $( "#diskPartCreate" ).dialog({
 				size:diskSize
 			},
 				function (data) {
-				wycFun.affirmBtnEnter(data,'ok',['创建成功','创建失败'],150,112);
+				wycFun.affirmBtnEnter(data,'ok',['创建成功','创建失败'],180,132);
 			}, "json");
+			$(this).dialog("close");
+			}else{
+				$(this).find(".j_input_num_error").show();
+				$(this).find("input").val('');
 			}
-		$(this).dialog("close");
+			}
+		
 		},
 		"取消":function(){
 			$(this).dialog("close");
 		}
+	},
+	close:function(){
+		$(this).find(".j_input_num_error").hide();
+		$(this).find("input").val('');
 	}
 });
 
@@ -306,6 +319,7 @@ $('.j_disk').live('click',function(event){
 		var dataindex_obj = eval(dataindex_str);
 		var temp = $(this).find(".j_diskInfoTable");
 		wycFun.fillDataTotable(dataindex_obj,temp);
+		$(this).find(".j_titleInfo").append(document.createTextNode(dataindex_obj.type_name+dataindex_obj.num));
 		$(this).find(".j_diskFormat").show();
 		//console.log($(this).find(".j_diskInfoTable"));
 		switch (dataindex_obj.type) {
@@ -323,7 +337,14 @@ $('.j_disk').live('click',function(event){
 		}
 	}
 });
+$(".j_input_num").bind("focus",function(){
+	$(".j_input_num_error").hide();
+});
+$(document).ready(function(){
 wycFun.initFun();
+$('#tabs').tabs();
+});
+
 
 
 

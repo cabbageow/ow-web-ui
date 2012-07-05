@@ -1,6 +1,6 @@
 ﻿@charset "utf-8"
 body{font-family:Microsoft YaHei,"Times New Roman",Georgia,Serif;;}
-.main{border:1px solid #094598;padding:0 49px 49px 49px;}
+.main{border:1px solid #094598;padding:0 45px 49px 45px;}
 .wrap{margin:0 auto;width:960px;padding:10px;}
 .none{margin:0;padding:0;}
 .title{font-size:18px;font-weight:700;height:25px;line-height:25px;display:inline-block;background-color:#cccccc}
@@ -45,3 +45,6 @@ th{height:50px;}
 .textInput{width:60px;margin:0 5px;}
 .textSelect{width:65px;margin:0 5px;}
 .checkInfo{width:1%;height:100%;}
+.ui-widget{font-size:13px;}
+.j_titleInfo{margin:0 0 0 40%;}
+.j_input_num_error{display:none;color:red;}

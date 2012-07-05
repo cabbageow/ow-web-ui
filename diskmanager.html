@@ -2,14 +2,20 @@
 <head>
 <title>磁盘管理</title>
 <link type="text/css" href="css/custom-theme/jquery-ui-1.8.5.custom.css" rel="stylesheet" />	
-<link rel="stylesheet" href="development-bundle/themes/base/jquery.ui.all.css"rel="stylesheet" />	
-	<link rel="stylesheet" href="mycss/demos.css"rel="stylesheet" />
-	<link rel="stylesheet" href="mycss/diskmanger.css" type="text/css"/>
+<link rel="stylesheet" href="mycss/diskmanger.css" type="text/css"/>
 </head>
 <body>
-<div class="wrap font14">
-<h1 class="title none">磁盘管理</h1>
-<div class="main" id="diskList">
+<div class="wrap font14 ">
+
+<div id="tabs">
+			<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
+				<li><a href="#tabs-1">磁盘管理</a></li>
+				<li><a href="#tabs-2">Second</a></li>
+				<li><a href="#tabs-3">Third</a></li>
+			</ul>
+			<div id="tabs-1">
+			<div class="main" id="diskList">
+			<h1 class="title none">磁盘管理</h1>
 	<!--<div class="j_disk clearfix" clickNum = "0">
 	<h2 class="title01 none ">磁盘1<span class="box01 font14">主分区<span class="redBorder rect"></span >扩展分区<span class="greenBorder rect"></span>逻辑分区<span class="yellowBorder rect"></span></span></h2>
 	<hr/>
@@ -40,20 +46,24 @@
 	-->
 </div>
 </div>
-<div id="dialog-delete" title="删除分区" style="display:none">
+			<div id="tabs-2">Phasellus mattis tincidunt nibh. Cras orci urna, blandit id, pretium vel, aliquet ornare, felis. Maecenas scelerisque sem non nisl. Fusce sed lorem in enim dictum bibendum.</div>
+			<div id="tabs-3">Nam dui erat, auctor a, dignissim quis, sollicitudin eu, felis. Pellentesque nisi urna, interdum eget, sagittis et, consequat vestibulum, lacus. Mauris porttitor ullamcorper augue.</div>
+
+</div>
+<div id="dialog-delete" title="删除分区" style="display:none" class="font12">
 	<p>
 		<span class="ui-icon ui-icon-circle-check" style="float:left; margin:0 7px 50px 0;"></span>
 		删除分区会丢失次分区上的所有数据,<br/>
 		确定要删除么？
 	</p>
 </div>
-<div id="diskCheckMess" title="磁盘检查" style="display:none">
+<div id="diskCheckMess" title="磁盘检查" style="display:none" class="font12">
 	<p>
 		进度</p><div style=" margin:7px 0px 0;height:20px; border:1px solid #cccccc;"><div class="checkInfo green" id="checkLoading"></div></div>
 		
 	
 </div>
-<div id="diskFarmating" title="格式化" style="display:none">
+<div id="diskFarmating" title="格式化" style="display:none" class="font12">
 	<p>
 		文件系统<select class="textSelect">
 		<option name="ntfs">NTFS</option>
@@ -62,8 +72,8 @@
 		
 	</p>
 </div>
-<div id="diskPartCreate" title="创建分区" style="display:none">
-	<p>分区大小<input type="text" class="textInput"/>M</p>
+<div id="diskPartCreate" class="font12" title="创建分区" style="display:none">
+	<p>分区大小<input type="text" class="textInput j_input_num"/>M<span class="j_input_num_error">请输入正确的数字</span></p>
 	<p>
 		文件系统<select class="textSelect">
 		<option name="ntfs">NTFS</option>
@@ -71,10 +81,10 @@
 	</select>		
 	</p>
 </div>
-<div id="okbtn" title="Download complete" style="display:none">
+<div id="okbtn" title="Download complete" style="display:none" class="font12">
 </div>
 <script src="js/jquery-1.4.2.min.js" type="text/javascript"type="text/javascript"></script>
-	<script src="development-bundle/external/jquery.bgiframe-2.1.2.js" type="text/javascript"> </script>
+<script type="text/javascript" src="js/jquery-ui-1.8.5.custom.min.js"></script>
 	<script src="development-bundle/ui/jquery.ui.core.js"type="text/javascript"></script>
 	<script src="development-bundle/ui/jquery.ui.widget.js"type="text/javascript"></script>
 	<script src="development-bundle/ui/jquery.ui.mouse.js"type="text/javascript"></script>
