@@ -319,7 +319,8 @@ $('.j_disk').live('click',function(event){
 		var dataindex_obj = eval(dataindex_str);
 		var temp = $(this).find(".j_diskInfoTable");
 		wycFun.fillDataTotable(dataindex_obj,temp);
-		$(this).find(".j_titleInfo").append(document.createTextNode(dataindex_obj.type_name+dataindex_obj.num));
+		
+		$(this).find(".j_titleInfo").html(dataindex_obj.type_name+dataindex_obj.num);
 		$(this).find(".j_diskFormat").show();
 		//console.log($(this).find(".j_diskInfoTable"));
 		switch (dataindex_obj.type) {
