@@ -69,7 +69,7 @@ var wycFun = {
 						default:
 							break;
 						}
-						console.log(data.parts[k].parts[i].range['end']);
+						//console.log(data.parts[k].parts[i].range['end']);
 						percent = this.getPercent(diskExtenedSum, data.parts[k].parts[i].range['end'] - data.parts[k].parts[i].range['start'] + 1);
 						percent = percent - 1; //少1像素的区域留给边框
 						typeName = data.parts[k].parts[i].type_name;
@@ -169,19 +169,18 @@ $("#dialog-delete" ).dialog({
 			"确认":function() {
 			if(wycVal.clickNum >=0){
 		var dataIndex = $(".j_diskOperate")[wycVal.clickNum].getAttribute('diskdata');
-		console.log($(".j_diskOperate")[wycVal.clickNum]);
+		//console.log($(".j_diskOperate")[wycVal.clickNum]);
 			dataIndex = eval(dataIndex);			
-			$.get(requestURL.disk_part_delete, {
+			$.get(requestURL.disk_part_delete,{
 				dev : dataIndex.dev,
-				num : dataIndex.num,
-			},
-				function (data) {
+				num : dataIndex.num
+			},function(data){
 				wycFun.affirmBtnEnter(data,'ok',['删除成功','删除失败'],150,112);
 			}, "json");
 				}
 					$(this).dialog( "close" );
 				}
-			},
+			}
 		});
 $( "#diskCheckMess" ).dialog({
 			autoOpen:false,
@@ -269,7 +268,7 @@ if(wycVal.clickNum >=0){
 	dataIndex = eval(dataIndex);
 		$.get(requestURL.disk_part_check, {
 				dev : dataIndex.dev,
-				num : dataIndex.num,
+				num : dataIndex.num
 			},
 				function (data) {
 				var getData = eval(data);
@@ -308,7 +307,7 @@ $('.j_disk').live('click',function(event){
 		var temp = $(this).find(".j_diskInfoTable");
 		wycFun.fillDataTotable(dataindex_obj,temp);
 		$(this).find(".j_diskFormat").show();
-		console.log($(this).find(".j_diskInfoTable"));
+		//console.log($(this).find(".j_diskInfoTable"));
 		switch (dataindex_obj.type) {
 		case 'primary':
 		case 'logical':
