@@ -344,7 +344,9 @@ $('.j_disk').live('click', function (event) {
 $(".j_input_num").bind("focus", function () {
 	$(".j_input_num_error").hide();
 });
+
 $(document).ready(function () {
-	wycFun.initFun();
 	$('#tabs').tabs();
+	wycFun.initFun();
+	
 });
