@@ -1,5 +1,7 @@
 ﻿/*页面交互的js*/
 //ajax读取json数据
+$('#tabs').tabs();
+
 var requestURL = {
 	disk_manager : "json/disk_manager.json",
 	disk_part_check : "json/disk_part_check.json",

@@ -15,7 +15,8 @@
 	<script src="development-bundle/ui/jquery.ui.resizable.js"type="text/javascript"></script>
 	<script src="development-bundle/ui/jquery.ui.dialog.js"type="text/javascript"></script>
 		<script type="text/javascript" >
-		$(function() {			
+		$(function() {
+			var nowHref = "";
 			// Accordion
 			$("#accordion").accordion({
 				header : "h3",
@@ -24,8 +25,13 @@
 			});
 			$("#main").load("home.html");
 			$(".j_memu").bind("click",function(event){
+				$(".j_memu").removeClass("aClass1");
+				this.className = "aClass1";
 				var href = this.href;
+				if(nowHref !==href){
 				$("#main").load(href);
+					nowHref = href;
+				}
 				event.preventDefault();
 				return false;
 			});
@@ -39,11 +45,11 @@
 <div id="banner" >
 </div>
 <div class="center clearfix">
-<div class="ui-widget clearfix" id="left_menu">
+<div class="ui-widget" id="left_menu">
 <div id="accordion">
                 <div>
                     <h3><a href="#">磁盘管理</a></h3>
-                    <div class="item"><a href="diskmanager.html" class="j_memu" >查看磁盘<br/></a></div>
+                    <div class="item"><a href="diskmanage.html" class="j_memu" >查看磁盘<br/></a></div>
                 </div>
                 <div>
                     <h3><a href="#">Second</a></h3>
@@ -58,7 +64,8 @@
 <div class="main" id="main">
 </div>
 </div>
-<div id="footer"  ></div>
 </div>
+<div id="footer"></div>
+<script type="text/javascript" src="js/common.js"></script>
 </body>
 </html>

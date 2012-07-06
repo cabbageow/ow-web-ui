@@ -1,12 +1,13 @@
 ﻿@charset "utf-8"
-body{font-family:Microsoft YaHei,"Times New Roman",Georgia,Serif;;}
-.wrapall{position:relative;}
+body{font-family: Arial,sans-serif;}
+.wrapall{position:relative;height:960px;min-height:840px;}
 .abs{position:absolute;}
 #left_menu { margin:0 auto; height:100%; width:120px;font-size:13px;margin-top:50px;float:left;}
 a,a:hover{text-decoration:none;}
 #left_menu .item{padding: 10px; text-align: center;overflow:hidden;}
-#banner,#footer{height:100px;background:#115599;}
-#main{overflow:auto;padding:0 0 0 30px;}
+#banner{height:100px;background:#115599;}
+#footer{height:100px;background:#115599;position:absolute;bottom:10px;width:100%}
+#main{overflow:auto;padding:0 0 0 30px;position:abaolute;margin:0 0 0 125px;}
 .clearfix:after{visibility: hidden;display: block;font-size: 0;content: " ";clear: both;height: 0;}
 * html .clearfix{ zoom: 1; } /* IE6 */
 *:first-child+html .clearfix{zoom: 1;} /* IE7 */
@@ -25,3 +26,5 @@ a,a:hover{text-decoration:none;}
 .w100{width:100px;}
 .w150{width:150px;}
 .w200{width:200px;}
+#accordion .aClass1{color:#EA9999;font-weight:900;}
+#accordion  .aClass2{color:#252525;font-weight:500;}
