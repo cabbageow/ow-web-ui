@@ -1,20 +1,21 @@
 ﻿<!DOCTYPE HTML>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>磁盘管理</title>
 <link type="text/css" href="css/custom-theme/jquery-ui-1.8.5.custom.css" rel="stylesheet" />	
 <link rel="stylesheet" href="mycss/diskmanger.css" type="text/css"/>
 </head>
 <body>
-<div class="wrap font14 ">
+<div class="font14 " id="diskmanager">
 
 <div id="tabs">
-			<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
+			<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all tabs">
 				<li><a href="#tabs-1">磁盘管理</a></li>
 				<li><a href="#tabs-2">Second</a></li>
 				<li><a href="#tabs-3">Third</a></li>
 			</ul>
 			<div id="tabs-1">
-			<div class="main" id="diskList">
+			<div id="diskList">
 			<h1 class="title none">磁盘管理</h1>
 	<!--<div class="j_disk clearfix" clickNum = "0">
 	<h2 class="title01 none ">磁盘1<span class="box01 font14">主分区<span class="redBorder rect"></span >扩展分区<span class="greenBorder rect"></span>逻辑分区<span class="yellowBorder rect"></span></span></h2>
@@ -82,6 +83,7 @@
 	</p>
 </div>
 <div id="okbtn" title="Download complete" style="display:none" class="font12">
+</div>
 </div>
 <script src="js/jquery-1.4.2.min.js" type="text/javascript"type="text/javascript"></script>
 <script type="text/javascript" src="js/jquery-ui-1.8.5.custom.min.js"></script>

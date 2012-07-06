@@ -11,4 +11,4 @@
 	}
 	}
 };
-setInterval(commonFunc.changeTheHrefByHash,1000);
+//setInterval(commonFunc.changeTheHrefByHash,1000);

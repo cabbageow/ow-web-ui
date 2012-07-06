@@ -1,50 +1,59 @@
 ﻿@charset "utf-8"
 body{font-family:Microsoft YaHei,"Times New Roman",Georgia,Serif;;}
-.main{border:1px solid #094598;padding:0 45px 49px 45px;}
-.wrap{margin:0 auto;width:960px;padding:10px;}
-.none{margin:0;padding:0;}
-.title{font-size:18px;font-weight:700;height:25px;line-height:25px;display:inline-block;background-color:#cccccc}
-.title01{font-size:25px;font-weight:700;height:25px;line-height:25px; }
-.rect{border-left-width:10px;border-right-width:10px;border-style:solid;margin:0 8px;height:0;width:0;overflow:hidden;font-size:10px;line-height: 0;
+#diskList{border:1px solid #094598;padding:0 45px 49px 45px;}
+#diskmanager {margin:0 auto;width:960px;padding:10px;}
+#diskmanager .none{margin:0;padding:0;}
+#diskmanager .title{font-size:18px;font-weight:700;height:25px;line-height:25px;display:inline-block;background-color:#cccccc}
+#diskmanager .title01{font-size:25px;font-weight:700;height:25px;line-height:25px; }
+#diskmanager .rect{border-left-width:10px;border-right-width:10px;border-style:solid;margin:0 8px;height:0;width:0;overflow:hidden;font-size:10px;line-height: 0;
 +zoom:1;+border-width:10px;}
-.red{background-color:#ea9999;;}
-.green{background-color:#b6d7a8}
-.yellow{background-color:#ffe599}
-.yellow2{background-color:#ffd966}
+#diskmanager .red{background-color:#ea9999;;}
+#diskmanager .green{background-color:#b6d7a8}
+#diskmanager .yellow{background-color:#ffe599}
+#diskmanager .yellow2{background-color:#ffd966}
 
-.block{background-color:#cccccc;}
-.redBorder{border-color:#ea9999;;}
-.greenBorder{border-color:#b6d7a8}
-.yellowBorder{border-color:#ffe599}
-.left{float:left;}
-.box01{margin:0 0 0 200px;line-height:25px;}
+#diskmanager .block{background-color:#cccccc;}
+#diskmanager .redBorder{border-color:#ea9999;;}
+#diskmanager .greenBorder{border-color:#b6d7a8}
+#diskmanager .yellowBorder{border-color:#ffe599}
+#diskmanager .left{float:left;}
+#diskmanager .box01{margin:0 0 0 200px;line-height:25px;}
 .font14{font-size:14px;font-weight:700}
-.inlineBlock{display:inline-block;}
-.box02{height:50px;text-align:center;}
-.box02_1{float:left;height:50px;text-align:center;line-height:50px;border:2px solid #1e1f25;vertical-align:center;cursor:pointer;}
-.w500{width:500px;}
-.w100{width:100px;}
-.w150{width:150px;}
-.w200{width:200px;}
-.h30{height:30px;line-height:30px;}
-.box02_2{margin:10px 0px;}
-.clearfix:after{visibility:hidden;display:block;height:0;font-size:0;clear:both;}
-*:first-child+html .clearfix { zoom: 1;}
-.disk{margin-top:40px;}
-.diskinfo{border:2px solid #1e1f25;margin-top:20px;position:relative;}
-.title03{margin:15px;}
-.table1 {width:500px;margin: 0 auto;text-align:left;border-spacing: 0px 20px;}
+#diskmanager .inlineBlock{display:inline-block;}
+#diskmanager .box02{height:50px;text-align:center;}
+#diskmanager .box02_1{float:left;height:50px;text-align:center;line-height:50px;border:2px solid #1e1f25;vertical-align:center;cursor:pointer;}
+#diskmanager .w500{width:500px;}
+#diskmanager .w100{width:100px;}
+#diskmanager .w150{width:150px;}
+#diskmanager .w200{width:200px;}
+#diskmanager .h30{height:30px;line-height:30px;}
+#diskmanager .box02_2{margin:10px 0px;}
+.clearfix:after {
+visibility: hidden;
+display: block;
+font-size: 0;
+content: " ";
+clear: both;
+height: 0;
+}
+* html .clearfix{ zoom: 1; } /* IE6 */
+*:first-child+html .clearfix { zoom: 1; } /* IE7 */
+#diskmanager .disk{margin-top:40px;}
+#diskmanager .diskinfo{border:2px solid #1e1f25;margin-top:20px;position:relative;}
+#diskmanager .title03{margin:15px;}
+#diskmanager .table1 {width:500px;margin: 0 auto;text-align:left;border-spacing: 0px 20px;}
 th{height:50px;}
-.td1{width:100px;}
-.itembtn{position:relative;height:100px;}
-.btn1{left:60px;top:0;position:absolute;width:95px;}
-.btn2{left:315px;}
-.btn3{top:55px;}
-.myspanclose{position:absolute;right:3px;top:5px;cursor: pointer;}
-.marginAuto{margin:2px auto 0;text-align:center;font-size:14px;}
-.textInput{width:60px;margin:0 5px;}
-.textSelect{width:65px;margin:0 5px;}
-.checkInfo{width:1%;height:100%;}
-.ui-widget{font-size:13px;}
-.j_titleInfo{margin:0 0 0 40%;}
-.j_input_num_error{display:none;color:red;}
+#diskmanager .td1{width:100px;}
+#diskmanager .itembtn{position:relative;height:100px;}
+#diskmanager .btn1{left:60px;top:0;position:absolute;width:95px;}
+#diskmanager .btn2{left:315px;}
+#diskmanager .btn3{top:55px;}
+#diskmanager .myspanclose{position:absolute;right:3px;top:5px;cursor: pointer;}
+#diskmanager .marginAuto{margin:2px auto 0;text-align:center;font-size:14px;}
+#diskmanager .textInput{width:60px;margin:0 5px;}
+#diskmanager .textSelect{width:65px;margin:0 5px;}
+#diskmanager .checkInfo{width:1%;height:100%;}
+#diskmanager .ui-widget{font-size:13px;}
+#diskmanager .j_titleInfo{margin:0 0 0 40%;}
+#diskmanager .j_input_num_error{display:none;color:red;}
+.tabs{overflow:hidden;}

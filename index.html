@@ -1,134 +1,72 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-		<title>index</title>
-		<link type="text/css" href="css/custom-theme/jquery-ui-1.8.5.custom.css" rel="stylesheet" />	
+﻿<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>路由器主界面</title>
+<link type="text/css" href="css/custom-theme/jquery-ui-1.8.5.custom.css" rel="stylesheet" />
+<link rel="stylesheet" href="mycss/diskmanger.css" type="text/css"/>
 		<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
 		<script type="text/javascript" src="js/jquery-ui-1.8.5.custom.min.js"></script>
 		<script type="text/javascript" >
-var s='[{"dev":"/dev/sda","size":5000000,"range":{"start":1,"range":200},"parts":[{"dev":"/dev/sda1","num":1,"type":"primary","mountpoint":"/tmp/sda1","fstype":"fat32","size":{"total":4000000,"left":3755},"range":{"start":1,"end":100}},{"dev":"/dev/sda2","num":2,"type":"extened","mountpoint":"","fstype":"","size":{"total":4000000,"left":0},"range":{"start":101,"end":200},"parts":[{"dev":"/dev/sda5","num":5,"type":"primary","mountpoint":"/tmp/sda1","fstype":"fat32","size":{"total":4000000,"left":3755},"range":{"start":101,"end":130}},{"dev":"/dev/sda6","num":6,"type":"logical","mountpoint":"/tmp/sda6","fstype":"fat32","size":{"total":4000000,"left":3755},"range":{"start":131,"end":200}}]}]},{"dev":"/dev/sdb","size":300000000,"range":{"start":1,"end":173},"parts":[{"dev":"/dev/sdb1","num":1,"type":"primary","mountpoint":"/tmp/sdb1","fstype":"fat32","size":{"total":4000000,"left":200000},"range":{"start":1,"end":173}}]}]';
-			var data = eval('('+s+')')
-
-			alert(data)
-
-		</script>
-		<script type="text/javascript">
-			$(function(){
-
-				// Accordion
-				$("#accordion").accordion({ header: "h3" });
-	
-				// Tabs
-				$('#tabs').tabs();
-	
-
-				// Dialog			
-				$('#dialog').dialog({
-					autoOpen: false,
-					width: 600,
-					buttons: {
-						"Ok": function() { 
-							$(this).dialog("close"); 
-						}, 
-						"Cancel": function() { 
-							$(this).dialog("close"); 
-						} 
-					}
-				});
-				
-				// Dialog Link
-				$('#dialog_link').click(function(){
-					$('#dialog').dialog('open');
-					return false;
-				});
-
-				// Datepicker
-				$('#datepicker').datepicker({
-					inline: true
-				});
-				
-				// Slider
-				$('#slider').slider({
-					range: true,
-					values: [17, 67]
-				});
-				
-				// Progressbar
-				$("#progressbar").progressbar({
-					value: 20 
-				});
-				
-				//hover states on the static widgets
-				$('#dialog_link, ul#icons li').hover(
-					function() { $(this).addClass('ui-state-hover'); }, 
-					function() { $(this).removeClass('ui-state-hover'); }
-				);
-				
+		$(function() {			
+			// Accordion
+			$("#accordion").accordion({
+				header : "h3",
+				 fillSpace: false,
+				 clearStyle:true
 			});
+			$("#main").load("home.html");
+			$(".j_memu").bind("click",function(event){
+				var href = this.href;
+				$("#main").load(href);
+				event.preventDefault();
+				return false;
+			});
+		});
 		</script>
 		<style type="text/css">
-			/*demo page css*/
-			body{ font: 62.5% "Trebuchet MS", sans-serif; margin: 10px;}
-			.demoHeaders { margin-top: 2em; }
-			#dialog_link {padding: .4em 1em .4em 20px;text-decoration: none;position: relative;}
-			#dialog_link span.ui-icon {margin: 0 5px 0 0;position: absolute;left: .2em;top: 50%;margin-top: -8px;}
-			ul#icons {margin: 0; padding: 0;}
-			ul#icons li {margin: 2px; position: relative; padding: 4px 0; cursor: pointer; float: left;  list-style: none;}
-			ul#icons span.ui-icon {float: left; margin: 0 4px;}
-			
-			#main { width:800px; }
-			#top_menu { height:100px; width:100%;}
-			#mid { width:100%; min-height:600px; }
-				#left_menu { float:left; height:100%; width:100px;}
-				#right_content { float:left; height:100%; width:680px;}
-			
-		</style>	
-	</head>
-	<body class="ui-helper-clearfix ui-widget-overlay">
-    
-    <div id="main">
-    <div id="top_menu" >
-    <h1>title</h1>
-    </div>
+		.wrapall{position:relative;}
+		.abs{position:absolute;}
+		#left_menu { margin:0 auto; height:100%; width:120px;font-size:13px;margin-top:50px;float:left;}
+a,a:hover{text-decoration:none;}
+#left_menu .item{padding: 10px; text-align: center;overflow:hidden;}
+#banner,#footer{height:100px;background:#115599;}
 
-    <div id="mid" class="ui-widget ui-widget-content">
-        <div class="ui-widget" id="left_menu">
-            <!-- Accordion -->
-            <h2 class=" ui-widget-header ui-corner-all">Accordion</h2>
-            <div id="accordion">
+.clearfix:after {
+visibility: hidden;
+display: block;
+font-size: 0;
+content: " ";
+clear: both;
+height: 0;
+}
+* html .clearfix             { zoom: 1; } /* IE6 */
+*:first-child+html .clearfix { zoom: 1; } /* IE7 */
+</style>
+</head>
+<div class="wrapall">
+<div id="banner" >
+</div>
+<div class="center clearfix">
+<div class="ui-widget clearfix" id="left_menu">
+<div id="accordion">
                 <div>
-                    <h3><a href="#">First</a></h3>
-                    <div>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.</div>
+                    <h3><a href="#">磁盘管理</a></h3>
+                    <div class="item"><a href="diskmanager.html" class="j_memu" >查看磁盘<br/></a></div>
                 </div>
                 <div>
                     <h3><a href="#">Second</a></h3>
-                    <div>Phasellus mattis tincidunt nibh.</div>
+                    <div class="item">Phasellus mattis tincidunt nibh.</div>
                 </div>
                 <div>
                     <h3><a href="#">Third</a></h3>
-                    <div>Nam dui erat, auctor a, dignissim quis.</div>
+                    <div class="item">Nam dui erat, auctor a, dignissim quis.</div>
                 </div>
-            </div>
-        </div>
-        <div id="right_content">
-            <!-- Tabs -->
-            <h2 class="demoHeaders">Tabs</h2>
-            <div id="tabs">
-                <ul>
-                    <li><a href="#tabs-1">First</a></li>
-                    <li><a href="#tabs-2">Second</a></li>
-                    <li><a href="#tabs-3">Third</a></li>
-                </ul>
-                <div id="tabs-1">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
-                <div id="tabs-2">Phasellus mattis tincidunt nibh. Cras orci urna, blandit id, pretium vel, aliquet ornare, felis. Maecenas scelerisque sem non nisl. Fusce sed lorem in enim dictum bibendum.</div>
-                <div id="tabs-3">Nam dui erat, auctor a, dignissim quis, sollicitudin eu, felis. Pellentesque nisi urna, interdum eget, sagittis et, consequat vestibulum, lacus. Mauris porttitor ullamcorper augue.</div>
-            </div>
-        </div>
-        <div style="clear:both"></div>
-    </div>
-    </div>
+</div>       
+</div>
+<div class="main" id="main">
+</div>
+</div>
+<div id="footer"  ></div>
+</div>
 </body>
 </html>
-
-
