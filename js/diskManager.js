@@ -137,14 +137,14 @@ var wycFun = {
 		var okBtn = $("#okbtn");
 		switch (getData.result.result) {
 		case 'ok':
-			this.btnMess(okBtn, titles[0], width, height);
+			commonFunc.btnMess(okBtn, titles[0], width, height);
 			break;
 		default:
-			this.btnMess(okBtn, titles[1], width, height);
+			commonFunc.btnMess(okBtn, titles[1], width, height);
 			break;
 		}
 	},
-	btnMess : function (j_btn, title, width, height) {
+	/*btnMess : function (j_btn, title, width, height) {
 		j_btn.html('<p class="marginAuto"><strong>' + title + '</strong></p>')
 		j_btn.dialog({ //弹出窗口
 			autoOpen : false,
@@ -162,7 +162,7 @@ var wycFun = {
 			}
 		});
 		j_btn.dialog("open");
-	},
+	},*/
 	regDiskNum : function (str) {
 		var reg = /^[1-9]+[0-9]*$/;
 		return reg.test(str);
@@ -350,5 +350,4 @@ $(".j_input_num").bind("focus", function () {
 $(document).ready(function () {
 	$('#tabs').tabs();
 	wycFun.initFun();
-	
 });

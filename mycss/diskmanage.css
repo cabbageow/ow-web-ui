@@ -2,16 +2,16 @@
 .main{border:1px solid #094598;padding:0 45px 49px 45px;}
 .wrap{width:960px;}
 .title{font-size:18px;font-weight:700;height:25px;line-height:25px;display:inline-block;background-color:#cccccc}
-.title01{font-size:25px;font-weight:700;height:25px;line-height:25px;color:#004276 }
+.title01{font-size:20px;font-weight:700;height:25px;line-height:20px;color:#004276; }
 .rect{border-left-width:10px;border-right-width:10px;border-style:solid;margin:0 8px;height:0;width:0;overflow:hidden;font-size:10px;line-height: 0;
 +zoom:1;+border-width:10px;}
 .box01{margin:0 0 0 200px;line-height:25px;}
 .inlineBlock{display:inline-block;}
-.box02{height:50px;text-align:center;}
-.box02_1{float:left;height:50px;text-align:center;line-height:50px;border:2px solid #1e1f25;vertical-align:center;cursor:pointer;}
-.h30{height:30px;line-height:30px;}
-.box02_2{margin:10px 0px;}
-.disk{margin-top:40px;}
+.box02{height:40px;text-align:center;}
+.box02_1{float:left;height:40px;text-align:center;line-height:40px;border:2px solid #1e1f25;vertical-align:center;cursor:pointer;}
+.h30{height:25px;line-height:25px;}
+.box02_2{margin:5px 0px;}
+.disk{margin-top:10px;}
 .diskinfo{border:2px solid #1e1f25;margin-top:20px;position:relative;}
 .title03{margin:15px;}
 .table1 {width:500px;margin: 0 auto;text-align:left;border-spacing: 0px 20px;}
