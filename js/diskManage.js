@@ -292,6 +292,7 @@ $(".j_diskCheckBtn").live("click", function () { //检查磁盘的操作
 				var getData = eval(data);
 				if (getData.result.process <= 100 && getData.result.process >= 0) {
 					checkLoading.css('width', getData.result.process + '%');
+					$("#j_checkResult").html(getData.result.process+'%');
 					wycVal.timeNum = setTimeout(timeSet, 1000);
 				} else if (getData.result.process == 100) {
 					clearTimeout(wycVal.timeNum);
@@ -316,7 +317,7 @@ $('.myspanclose').live('click', function () { //为自己写的关闭的按钮�
 $('.j_disk').live('click', function (event) {
 	
 	var e = event || window.event;
-	var target = event.target || event.srcElement;
+	var target = e.target || e.srcElement;
 	var dataindex_str = target.getAttribute('dataindex');
 	if (dataindex_str) {
 		$(".j_diskFormat").hide();
@@ -348,6 +349,6 @@ $(".j_input_num").bind("focus", function () {
 });
 
 $(document).ready(function () {
-	$('#tabs').tabs();
+	//$('#tabs').tabs();
 	wycFun.initFun();
 });
