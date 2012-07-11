@@ -4,7 +4,7 @@ body,html{font-family: Arial,sans-serif;width:100%}
 .abs{position:absolute;}
 #left_menu {margin:0 auto;width:120px;font-size:13px;float:left;min-height:460px;}
 #left_menu .item{padding: 10px; text-align: center;overflow:hidden;}
-a,a:hover{text-decoration:none;}
+a,a:hover{text-decoration:none;color:#C00}
 .center{margin:10px 0 85px 0;}
 #banner{height:80px;background:#09497B;}
 #footer{height:50px;background:#9f9999;position:fixed;bottom:0px;width:100%;}
@@ -27,6 +27,7 @@ a,a:hover{text-decoration:none;}
 .w100{width:100px;}
 .w150{width:150px;}
 .w200{width:200px;}
-#accordion .aClass1{color:#FFE599;font-weight:900;}
+#accordion .aClass1{color:#004276;font-weight:900;}
 #accordion  .aClass2{color:#252525;font-weight:500;}
 .loadingRuntxt{position:absolute;top:0;left:45%;}
+.memu{background-color:#9F9999;}
