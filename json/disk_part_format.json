@@ -4,7 +4,9 @@
 		"num":2,
 		"fstype":"ntfs", "fstype_comment":"文件系统类型" 
 	},
-	"result":{
-		"result":"ok"
+	"response":{
+		"result":"ok",
+		"data":{
+		}
 	}
 }

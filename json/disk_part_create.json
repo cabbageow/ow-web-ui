@@ -8,8 +8,10 @@
 		"size_comment":"新创建分区的大小，单位M",
 		"fstype":"ntfs"
 	},
-	"result":{
+	"response":{
 		"result":"ok",
-		"result_comment":"'ok'表示执行成功，'false'表示执行失败"
+		"result_comment":"'ok'表示执行成功，'false'表示执行失败",
+		"data":{
+		}
 	}
 }
