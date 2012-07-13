@@ -21,8 +21,11 @@ var wycFun = {
 		$.get(requestURL.disk_manager,
 			function (data) {
 			resultData = eval(data);
+			//console.log(resultData);
 			var diskDom = $('#diskList'),
 			htmlDiv = '';
+			if(resultData.response.result ==="ok"){
+			resultData = resultData.response.data;
 			for (var i = 0; i < resultData.length; i++) {
 				htmlDiv += '<div class="j_disk clearfix disk" clickNum = "' + i + '">';
 				var htmlDiv_temp = wycFun.fillColorHtmlByData(resultData[i], i);
@@ -30,6 +33,9 @@ var wycFun = {
 				htmlDiv += '</div>';
 			}
 			diskDom.html(htmlDiv);
+			}else{
+				alert(resultData.response.data);
+			}
 		}, "json");
 	},
 	getPercent : function (sum, num) { //获取百分比的函数
@@ -132,15 +138,15 @@ var wycFun = {
 	},
 	/*点击确认按钮弹出操作完成的窗口的方法,参数分别为：ajax返回的数据,应该返回的正确的数据,
 	对应的数据弹窗的标题[righttitle，othertitle]第一个对应正确的数据应该显示的标题，第二个非正确数据应该显示的标题,窗口的宽度和高度*/
-	affirmBtnEnter : function (datas, rightData, titles, width, height) {
+	affirmBtnEnter : function (datas, rightData, okTitle, width, height) {
 		var getData = eval(datas);
 		var okBtn = $("#okbtn");
-		switch (getData.result.result) {
+		switch (getData.response.result) {
 		case 'ok':
-			commonFunc.btnMess(okBtn, titles[0], width, height);
+			commonFunc.btnMess(okBtn, okTitle, width, height);
 			break;
 		default:
-			commonFunc.btnMess(okBtn, titles[1], width, height);
+			commonFunc.btnMess(okBtn, getData.response.data, width, height);
 			break;
 		}
 	},
@@ -183,7 +189,8 @@ $("#dialog-delete").dialog({
 					dev : dataIndex.dev,
 					num : dataIndex.num
 				}, function (data) {
-					wycFun.affirmBtnEnter(data, 'ok', ['删除成功', '删除失败'], 180, 132);
+				
+					wycFun.affirmBtnEnter(data, 'ok', '删除成功', 180, 132);
 				}, "json");
 			}
 			$(this).dialog("close");
@@ -221,7 +228,7 @@ $("#diskFarmating").dialog({
 					fstype : formatType
 				},
 					function (data) {
-					wycFun.affirmBtnEnter(data, 'ok', ['格式化成功', '格式化失败'], 180, 132);
+					wycFun.affirmBtnEnter(data, 'ok', '格式化成功', 180, 132);
 				}, "json");
 			}
 			$(this).dialog("close");
@@ -251,7 +258,7 @@ $("#diskPartCreate").dialog({
 						size : diskSize
 					},
 						function (data) {
-						wycFun.affirmBtnEnter(data, 'ok', ['创建成功', '创建失败'], 180, 132);
+						wycFun.affirmBtnEnter(data, 'ok', '创建成功', 180, 132);
 					}, "json");
 					$(this).dialog("close");
 				} else {
@@ -290,15 +297,22 @@ $(".j_diskCheckBtn").live("click", function () { //检查磁盘的操作
 			},
 				function (data) {
 				var getData = eval(data);
-				if (getData.result.process <= 100 && getData.result.process >= 0) {
-					checkLoading.css('width', getData.result.process + '%');
-					$("#j_checkResult").html(getData.result.process+'%');
+					if(getData.response.result ==="ok"){
+					getData = getData.response.data;
+				if (getData.data.process <= 100 && getData.data.process >= 0) {
+					checkLoading.css('width', getData.data.process + '%');
+					$("#j_checkResult").html(getData.data.process+'%');
 					wycVal.timeNum = setTimeout(timeSet, 1000);
-				} else if (getData.result.process == 100) {
+				} else if (getData.data.process == 100) {
 					clearTimeout(wycVal.timeNum);
 					//wycFun.initFun();
 					$("#diskCheckMess").dialog("close");
 				}
+				}else{
+				alert(getData.response.data);
+				
+				}			
+				
 			}, "json");
 		}
 		timeSet();

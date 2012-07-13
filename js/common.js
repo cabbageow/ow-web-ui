@@ -34,14 +34,14 @@
 function  setLoadRunDiv(url,datas,txtid,loadingCssId){
 	this.url =url;
 	this.datas = datas;
-	this.txtDom = $("#'+txtid);
+	this.txtDom = $("#"+txtid);
 	this.loadingCssDOm = $("#"+loadingCssId);
 	this.timeNum = null;
 }
 setLoadRunDiv.prototype = {
 	
 }
-if (wycVal.clickNum >= 0) {
+/*if (wycVal.clickNum >= 0) {
 		var checkLoading = $('#checkLoading');
 		checkLoading.css('width', "1%");
 		function timeSet() {
@@ -66,4 +66,4 @@ if (wycVal.clickNum >= 0) {
 		}
 		timeSet();
 		$("#diskCheckMess").dialog("open");
-	}
+	}*/
