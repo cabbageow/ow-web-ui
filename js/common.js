@@ -31,39 +31,51 @@
 		j_btn.dialog("open");
 	}
 };
-function  setLoadRunDiv(url,datas,txtid,loadingCssId){
-	this.url =url;
-	this.datas = datas;
-	this.txtDom = $("#"+txtid);
-	this.loadingCssDOm = $("#"+loadingCssId);
-	this.timeNum = null;
+function  setLoadRunDiv(url,sendDatas,txtid,loadingCssId){
+	this.url =url;//ajax的url
+	this.sendDatas = sendDatas;//发送的数据
+	this.txtDom = $("#"+txtid);//显示数值的id
+	this.loadingCssDOm = $("#"+loadingCssId);//显示进度宽度的id
+	this.timeNum = null;//定时器num
 }
 setLoadRunDiv.prototype = {
-	
-}
-/*if (wycVal.clickNum >= 0) {
-		var checkLoading = $('#checkLoading');
-		checkLoading.css('width', "1%");
-		function timeSet() {
-			var dataIndex = $(".j_diskOperate")[wycVal.clickNum].getAttribute('diskdata');
-			dataIndex = eval(dataIndex);
-			$.get(requestURL.disk_part_check, {
-				dev : dataIndex.dev,
-				num : dataIndex.num
-			},
-				function (data) {
+	start:function(){
+		var that = this;
+		$.get(that.url,that.sendDatas,function(data){
+			var getData = eval(data);
+			if(getData.response.result ==="ok"){
+				getData = getData.response;
+				if (getData.data.process <= 100 && getData.data.process >= 0) {
+					that.loadingCssDOm.css("width", getData.data.process + '%');
+					that.txtDom.text(getData.data.process+'%');
+				}
+			}else if(getData.data.process >= 100){
+			that.stop();
+			}
+		},"json");
+		that.timeNum = setTimeout(function(){that.start()},1000);
+		},
+	stop:function(){
+			var that = this;
+			clearTimeout(that.timeNum);
+		}		
+	}
+/*function (data) {
 				var getData = eval(data);
-				if (getData.result.process <= 100 && getData.result.process >= 0) {
-					checkLoading.css('width', getData.result.process + '%');
-					$("#j_checkResult").html(getData.result.process+'%');
+					if(getData.response.result ==="ok"){
+					getData = getData.response.data;
+				if (getData.data.process <= 100 && getData.data.process >= 0) {
+					checkLoading.css('width', getData.data.process + '%');
+					$("#j_checkResult").html(getData.data.process+'%');
 					wycVal.timeNum = setTimeout(timeSet, 1000);
-				} else if (getData.result.process == 100) {
+				} else if (getData.data.process == 100) {
 					clearTimeout(wycVal.timeNum);
 					//wycFun.initFun();
 					$("#diskCheckMess").dialog("close");
 				}
-			}, "json");
-		}
-		timeSet();
-		$("#diskCheckMess").dialog("open");
-	}*/
+				}else{
+				alert(getData.response.data);
+				
+				}			
+				
+			}, "json");*/

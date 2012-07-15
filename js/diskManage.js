@@ -203,13 +203,15 @@ $("#diskCheckMess").dialog({
 	title : "检查磁盘",
 	buttons : {
 		"取消" : function () {
-			clearTimeout(wycVal.timeNum);
+			//clearTimeout(wycVal.timeNum);
+			//checkedDisk.stop();
 			$(this).dialog("close");
 			
 		}
 	},
 	close : function () {
-		clearTimeout(wycVal.timeNum);
+		//clearTimeout(wycVal.timeNum);
+		checkedDisk.stop();
 	}
 });
 $("#diskFarmating").dialog({
@@ -285,7 +287,7 @@ $(".j_deleteBtn").live("click", function () {
 	$("#dialog-delete").dialog("open");
 });
 $(".j_diskCheckBtn").live("click", function () { //检查磁盘的操作
-	if (wycVal.clickNum >= 0) {
+	/*if (wycVal.clickNum >= 0) {
 		var checkLoading = $('#checkLoading');
 		checkLoading.css('width', "1%");
 		function timeSet() {
@@ -301,7 +303,7 @@ $(".j_diskCheckBtn").live("click", function () { //检查磁盘的操作
 					getData = getData.response.data;
 				if (getData.data.process <= 100 && getData.data.process >= 0) {
 					checkLoading.css('width', getData.data.process + '%');
-					$("#j_checkResult").html(getData.data.process+'%');
+					$("#j_checkResult").text(getData.data.process+'%');
 					wycVal.timeNum = setTimeout(timeSet, 1000);
 				} else if (getData.data.process == 100) {
 					clearTimeout(wycVal.timeNum);
@@ -317,8 +319,16 @@ $(".j_diskCheckBtn").live("click", function () { //检查磁盘的操作
 		}
 		timeSet();
 		$("#diskCheckMess").dialog("open");
-	}
+	}*/
+	var dataIndex = $(".j_diskOperate")[wycVal.clickNum].getAttribute('diskdata');
+	$("#diskCheckMess").dialog("open");
+	var checkedDisk = new setLoadRunDiv(requestURL.disk_part_check,{
+				dev : dataIndex.dev,
+				num : dataIndex.num
+			},"j_checkResult","checkLoading");
+			checkedDisk.start();
 });
+
 $(".j_createPartBtn").live("click", function () {
 	//创建分区按钮
 	$("#diskPartCreate").dialog("open");
