@@ -11,7 +11,8 @@ var requestURL = {
 };
 var resultData = {}, wycVal = {
 	timeNum1 : null, //定时器id号
-	clickNum : null //判断磁盘点击的序号
+	clickNum : null, //判断磁盘点击的序号
+	checkedDiskObj:null//进度条对象
 };
 var wycFun = {
 	initFun : function () {
@@ -150,25 +151,6 @@ var wycFun = {
 			break;
 		}
 	},
-	/*btnMess : function (j_btn, title, width, height) {
-		j_btn.html('<p class="marginAuto"><strong>' + title + '</strong></p>')
-		j_btn.dialog({ //弹出窗口
-			autoOpen : false,
-			title : title,
-			modal : true,
-			width : width,
-			height : height,
-			minWidth : 100,
-			minHeight : 100,
-			buttons : {
-				"确认" : function () {
-					$(this).dialog("close");
-					wycFun.initFun();
-				}
-			}
-		});
-		j_btn.dialog("open");
-	},*/
 	regDiskNum : function (str) {
 		var reg = /^[1-9]+[0-9]*$/;
 		return reg.test(str);
@@ -183,7 +165,6 @@ $("#dialog-delete").dialog({
 		"确认" : function () {
 			if (wycVal.clickNum >= 0) {
 				var dataIndex = $(".j_diskOperate")[wycVal.clickNum].getAttribute('diskdata');
-				//console.log($(".j_diskOperate")[wycVal.clickNum]);
 				dataIndex = eval(dataIndex);
 				$.get(requestURL.disk_part_delete, {
 					dev : dataIndex.dev,
@@ -203,15 +184,13 @@ $("#diskCheckMess").dialog({
 	title : "检查磁盘",
 	buttons : {
 		"取消" : function () {
-			//clearTimeout(wycVal.timeNum);
-			//checkedDisk.stop();
+			checkedDiskObj.stop();
 			$(this).dialog("close");
 			
 		}
 	},
 	close : function () {
-		//clearTimeout(wycVal.timeNum);
-		checkedDisk.stop();
+		checkedDiskObj.stop();
 	}
 });
 $("#diskFarmating").dialog({
@@ -322,11 +301,11 @@ $(".j_diskCheckBtn").live("click", function () { //检查磁盘的操作
 	}*/
 	var dataIndex = $(".j_diskOperate")[wycVal.clickNum].getAttribute('diskdata');
 	$("#diskCheckMess").dialog("open");
-	var checkedDisk = new setLoadRunDiv(requestURL.disk_part_check,{
+	 checkedDiskObj = new setLoadRunDiv(requestURL.disk_part_check,{
 				dev : dataIndex.dev,
 				num : dataIndex.num
 			},"j_checkResult","checkLoading");
-			checkedDisk.start();
+			checkedDiskObj.start();
 });
 
 $(".j_createPartBtn").live("click", function () {

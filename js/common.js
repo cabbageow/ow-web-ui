@@ -1,16 +1,9 @@
 ﻿var commonFunc = {
-	/*changeTheHrefByHash:function(){
-		//var href = top.location.hash.substring(1);
-		if(href !==top.name){
-		var href = top.name;
-		console.log(href);
-		var regHref = /\.html$/;//一个简单的匹配
-		if(regHref.test(href)){
-			window.location.href = href;
-		}
-	}
-	}*/
 	//okBtn 窗口的调用
+	//@param j_btn jqueryUI 的弹窗对象
+	//@ param title 需要弹出的显示信息
+	//@ param width 弹窗的宽度,
+	//@ param height 弹窗的高度 
 	btnMess : function (j_btn, title, width, height) {
 		j_btn.html('<p class="marginAuto"><strong>' + title + '</strong></p>')
 		j_btn.dialog({ //弹出窗口
@@ -31,51 +24,39 @@
 		j_btn.dialog("open");
 	}
 };
-function  setLoadRunDiv(url,sendDatas,txtid,loadingCssId){
-	this.url =url;//ajax的url
-	this.sendDatas = sendDatas;//发送的数据
-	this.txtDom = $("#"+txtid);//显示数值的id
-	this.loadingCssDOm = $("#"+loadingCssId);//显示进度宽度的id
-	this.timeNum = null;//定时器num
+//进度条对象
+// @param url ajax的发送地址
+//@param sendDatas ajax发送的参数，
+//@param txtid 显示文字进度的dom元素的id，
+//@loadingCssId 显示颜色进度的css Dom元素的id，
+function setLoadRunDiv(url, sendDatas, txtId, loadingCssId) {
+	this.url = url; //ajax的url
+	this.sendDatas = sendDatas; //发送的数据
+	this.txtDom = $("#" + txtId); //显示数值的id
+	this.loadingCssDOm = $("#" + loadingCssId); //显示进度宽度的id
+	this.timeNum = null; //定时器num
 }
 setLoadRunDiv.prototype = {
-	start:function(){
+	start : function () {
 		var that = this;
-		$.get(that.url,that.sendDatas,function(data){
+		$.get(that.url, that.sendDatas, function (data) {
 			var getData = eval(data);
-			if(getData.response.result ==="ok"){
+			if (getData.response.result === "ok") {
 				getData = getData.response;
 				if (getData.data.process <= 100 && getData.data.process >= 0) {
 					that.loadingCssDOm.css("width", getData.data.process + '%');
-					that.txtDom.text(getData.data.process+'%');
+					that.txtDom.text(getData.data.process + '%');
 				}
-			}else if(getData.data.process >= 100){
-			that.stop();
+			} else if (getData.data.process >= 100) {
+				that.stop();
 			}
-		},"json");
-		that.timeNum = setTimeout(function(){that.start()},1000);
-		},
-	stop:function(){
-			var that = this;
-			clearTimeout(that.timeNum);
-		}		
+		}, "json");
+		that.timeNum = setTimeout(function () {
+				that.start()
+			}, 1000);
+	},
+	stop : function () {
+		var that = this;
+		clearTimeout(that.timeNum);
 	}
-/*function (data) {
-				var getData = eval(data);
-					if(getData.response.result ==="ok"){
-					getData = getData.response.data;
-				if (getData.data.process <= 100 && getData.data.process >= 0) {
-					checkLoading.css('width', getData.data.process + '%');
-					$("#j_checkResult").html(getData.data.process+'%');
-					wycVal.timeNum = setTimeout(timeSet, 1000);
-				} else if (getData.data.process == 100) {
-					clearTimeout(wycVal.timeNum);
-					//wycFun.initFun();
-					$("#diskCheckMess").dialog("close");
-				}
-				}else{
-				alert(getData.response.data);
-				
-				}			
-				
-			}, "json");*/
+}
