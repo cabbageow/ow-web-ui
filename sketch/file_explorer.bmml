@@ -1,4 +1,4 @@
-<mockup version="1.0" skin="sketch" measuredW="1220" measuredH="399" mockupW="1178" mockupH="347">
+<mockup version="1.0" skin="sketch" measuredW="1220" measuredH="507" mockupW="1193" mockupH="455">
   <controls>
     <control controlID="0" controlTypeID="com.balsamiq.mockups::BreadCrumbs" x="274" y="103" w="-1" h="-1" measuredW="202" measuredH="23" zOrder="0" locked="false" isInGroup="-1">
       <controlProperties>
@@ -18,9 +18,9 @@
         <vLines>true</vLines>
       </controlProperties>
     </control>
-    <control controlID="4" controlTypeID="com.balsamiq.mockups::StickyNote" x="74" y="242" w="117" h="147" measuredW="109" measuredH="123" zOrder="4" locked="false" isInGroup="-1">
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::StickyNote" x="17" y="243" w="176" h="254" measuredW="109" measuredH="123" zOrder="4" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>%u5982%u679C%u7C7B%u578B%u662F%u76EE%u5F55%uFF0C%u8FD9%u91CC%u5C31%u663E%u793A%u4E3A%u4E00%u4E2A%u94FE%u63A5%uFF0C%u7528%u6237%u70B9%u51FB%u5C31%u8FDB%u5165%u8FD9%u4E2A%u76EE%u5F55</text>
+        <text>%u6587%u4EF6%u7684%u201C%u540D%u79F0%u201D%u9879%u90FD%u663E%u793A%u4E3A%u8FDE%u63A5%0A%u5982%u679C%u662F%u76EE%u5F55%uFF0C%u90A3%u4E48%u70B9%u51FB%u8FDE%u63A5%u5C31%u8FDB%u5165%u8FD9%u4E2A%u76EE%u5F55%0A%u5982%u679C%u662F%u56FE%u7247%uFF0C%u70B9%u51FB%u5C31%u663E%u793A%u56FE%u7247%0A%u5982%u679C%u662F%u5176%u4ED6%u6D4F%u89C8%u5668%u4E0D%u9ED8%u8BA4%u652F%u6301%u7684%u683C%u5F0F%uFF0C%u90A3%u4E48%u70B9%u51FB%u5C31%u4E0B%u8F7D%u6587%u4EF6</text>
       </controlProperties>
     </control>
     <control controlID="6" controlTypeID="com.balsamiq.mockups::Arrow" x="124" y="176" w="-1" h="-1" measuredW="150" measuredH="100" zOrder="5" locked="false" isInGroup="-1">
