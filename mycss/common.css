@@ -1,5 +1,7 @@
-﻿@charset "utf-8"
+﻿@charset "utf-8";
 body,html{font-family: Arial,sans-serif;width:100%}
+.none{margin:0;padding:0;}
+.no-list-style{list-style:none;}
 .wrapall{position:relative;width:100%;}
 .abs{position:absolute;}
 #left_menu {margin:0 auto;width:120px;font-size:13px;float:left;min-height:460px;}
@@ -23,11 +25,12 @@ a,a:hover{text-decoration:none;color:#C00}
 .yellowBorder{border-color:#ffe599}
 .color-blue{color:blue;}
 .left{float:left;}
-.none{margin:0;padding:0;}
+
 .w500{width:500px;}
 .w100{width:100px;}
 .w150{width:150px;}
 .w200{width:200px;}
+.w800{width:800px;}
 #accordion .aClass1{color:#004276;font-weight:900;}
 #accordion  .aClass2{color:#252525;font-weight:500;}
 .loadingRuntxt{position:absolute;top:0;left:45%;}

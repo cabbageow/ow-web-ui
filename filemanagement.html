@@ -1,50 +1,113 @@
 ﻿<!DOCTYPE HTML>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>文件管理</title>
-<link rel="stylesheet" href="mycss/common.css" type="text/css"/>
-<link href="mycss/filemanagement.css" type="text/css"/>
-<body>
-<div class="wrapall">
-<h1>文件管理
-<hr/>
-</h1>
-<ul class="none navbanner" id="fileNav">
-<li class="inline"><a href="index.html" class="color-blue">路由器</a>&gt</li>
-<li class="inline"><a href="index.html" class="color-blue">磁盘1</a>&gt</li>
-<li class="inline"><b>路由器</b></li>
-</ul>
-<div class="data-show">
-<table  border="3px" rules="cols">
-<tbody>
-<tr>
-<td >名称
-</td>
-<td>类型
-</td>
-<td>大小
-</td>
-<td>SAMBA共享
-</td>
-<td>DLAN共享
-</td>
-</tr>
-<tr>
-<td >名称
-</td>
-<td>类型
-</td>
-<td>大小
-</td>
-<td>SAMBA共享
-</td>
-<td>DLAN共享
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</body>
+  
+  <head>
+    <meta charset="UTF-8">
+    <title>
+      文件管理
+    </title>
+    <link rel="stylesheet" href="mycss/common.css" type="text/css" />
+    <link href="mycss/filemanagement.css" type="text/css" />
+    <style>
+      table{border-collapse:collapse;} table,th{border:1px solid black;} 
+	  td{border-right:1px solid black;}
+	  .th{background-color:#115599;width:150px;}
+	  .td{width:150px;text-align:center;background-color:#5599ee;}
+	  .td2{background-color:#99ff55;}
+    </style>
+    
+    <body>
+      <div class="wrapall">
+        <h1>
+          文件管理
+          <hr/>
+        </h1>
+        <ul class="none navbanner" id="fileNav">
+          <li class="inline">
+            <a href="index.html" class="color-blue">
+              路由器
+            </a>
+            &gt
+          </li>
+          <li class="inline">
+            <a href="index.html" class="color-blue">
+              磁盘1
+            </a>
+            &gt
+          </li>
+          <li class="inline">
+            <b>
+              路由器
+            </b>
+          </li>
+        </ul>
+        <div class="data-show">
+          <table>
+            <tbody>
+              <tr >
+                <th class="th">
+                  名称
+                </th>
+                <th class="th">
+                  类型
+                </th >
+                <th class="th">
+                  大小
+                </th>
+                <th class="th">
+                  SAMBA共享
+                </th>
+                <th class="th">
+                  DLAN共享
+                </th>
+				<th class="th">
+                 删除
+                </th>
+              </tr>
+              <tr >
+                <td class="td ">
+                  动物
+                </td>
+                <td class="td ">
+                  目录
+                </td>
+                <td class="td ">
+                  大小
+                </td>
+                <td class="td ">
+                 <input type="checkbox" name="SAMBAshare" value ="SAMBA共享" checked="checked">SAMBA共享<br/>
+                </td>
+                <td class="td ">
+				 <input type="checkbox" name="DLANshare" value ="DLAN共享" checked="checked">DLAN共享<br/>
+                </td>
+				<th class="td">
+                 <button value="delete" name="delete">删除</button>
+                </th>
+              </tr>
+              <tr>
+                <td class="td  td2">
+                  pp.jpg
+                </td>
+                <td class="td  td2">
+                  jpg
+                </td>
+                <td class="td  td2">
+                   24k
+                </td>
+                <td class="td  td2">
+                  <input type="checkbox" name="SAMBAshare" value ="SAMBA共享" >SAMBA共享<br/>
+                </td>
+                <td class="td  td2">
+                 <input type="checkbox" name="DLANshare" value ="DLAN共享" checked="checked">DLAN共享<br/>
+                </td>
+				<td class="td  td2">
+				 <button value="delete" name="delete">删除</button>
+				 </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </body>
+
 </html>
