@@ -21,6 +21,7 @@ a,a:hover{text-decoration:none;color:#C00}
 .redBorder{border-color:#ea9999;;}
 .greenBorder{border-color:#b6d7a8}
 .yellowBorder{border-color:#ffe599}
+.color-blue{color:blue;}
 .left{float:left;}
 .none{margin:0;padding:0;}
 .w500{width:500px;}
@@ -31,3 +32,4 @@ a,a:hover{text-decoration:none;color:#C00}
 #accordion  .aClass2{color:#252525;font-weight:500;}
 .loadingRuntxt{position:absolute;top:0;left:45%;}
 .memu{background-color:#9F9999;}
+.inline{display:inline;}
