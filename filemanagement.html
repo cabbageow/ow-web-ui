@@ -9,19 +9,20 @@
     <link rel="stylesheet" href="mycss/common.css" type="text/css" />
     <link href="mycss/filemanagement.css" type="text/css" />
     <style>
-      table{border-collapse:collapse;} table,th{border:1px solid black;} 
+	body{font-size:13px;}
+      table{border-collapse:collapse;} 
+	  table,th{border:1px solid black;} 
 	  td{border-right:1px solid black;}
-	  .th{background-color:#115599;width:150px;}
-	  .td{width:150px;text-align:center;background-color:#5599ee;}
-	  .td2{background-color:#99ff55;}
+	  .th{background-color:#ccc;width:150px;}
+	  .td{width:150px;text-align:center;}
     </style>
     
     <body>
       <div class="wrapall">
-        <h1>
+        <h2 class="title01 none">
           文件管理
           <hr/>
-        </h1>
+        </h2>
         <ul class="none navbanner" id="fileNav">
           <li class="inline">
             <a href="index.html" class="color-blue">
@@ -45,62 +46,62 @@
           <table>
             <tbody>
               <tr >
-                <th class="th">
+                <th class="th block">
                   名称
                 </th>
-                <th class="th">
+                <th class="th block">
                   类型
                 </th >
-                <th class="th">
+                <th class="th block">
                   大小
                 </th>
-                <th class="th">
+                <th class="th block">
                   SAMBA共享
                 </th>
-                <th class="th">
+                <th class="th block">
                   DLAN共享
                 </th>
-				<th class="th">
+				<th class="th block">
                  删除
                 </th>
               </tr>
               <tr >
-                <td class="td ">
+                <td class="td white">
                   动物
                 </td>
-                <td class="td ">
+                <td class="td white">
                   目录
                 </td>
-                <td class="td ">
+                <td class="td white">
                   大小
                 </td>
-                <td class="td ">
+                <td class="td white">
                  <input type="checkbox" name="SAMBAshare" value ="SAMBA共享" checked="checked">SAMBA共享<br/>
                 </td>
-                <td class="td ">
+                <td class="td  white">
 				 <input type="checkbox" name="DLANshare" value ="DLAN共享" checked="checked">DLAN共享<br/>
                 </td>
-				<th class="td">
+				<td class="td white">
                  <button value="delete" name="delete">删除</button>
-                </th>
+                </td>
               </tr>
               <tr>
-                <td class="td  td2">
+                <td class="td block">
                   pp.jpg
                 </td>
-                <td class="td  td2">
+                <td class="td  block">
                   jpg
                 </td>
-                <td class="td  td2">
+                <td class="td  block">
                    24k
                 </td>
-                <td class="td  td2">
+                <td class="td  block">
                   <input type="checkbox" name="SAMBAshare" value ="SAMBA共享" >SAMBA共享<br/>
                 </td>
-                <td class="td  td2">
+                <td class="td  block">
                  <input type="checkbox" name="DLANshare" value ="DLAN共享" checked="checked">DLAN共享<br/>
                 </td>
-				<td class="td  td2">
+				<td class="td  block">
 				 <button value="delete" name="delete">删除</button>
 				 </td>
               </tr>
