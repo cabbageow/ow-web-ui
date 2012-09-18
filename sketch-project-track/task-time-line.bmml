@@ -1,4 +1,4 @@
-<mockup version="1.0" skin="sketch" measuredW="952" measuredH="364" mockupW="904" mockupH="327">
+<mockup version="1.0" skin="sketch" measuredW="585" measuredH="583" mockupW="537" mockupH="546">
   <controls>
     <control controlID="1" controlTypeID="com.balsamiq.mockups::Label" x="51" y="27" w="-1" h="-1" measuredW="57" measuredH="23" zOrder="0" locked="false" isInGroup="-1">
       <controlProperties>
@@ -41,7 +41,7 @@
         <text>task5</text>
       </controlProperties>
     </control>
-    <control controlID="11" controlTypeID="com.balsamiq.mockups::StickyNote" x="833" y="90" w="-1" h="-1" measuredW="109" measuredH="123" zOrder="9" locked="false" isInGroup="-1">
+    <control controlID="11" controlTypeID="com.balsamiq.mockups::StickyNote" x="144" y="237" w="109" h="98" measuredW="109" measuredH="123" zOrder="9" locked="false" isInGroup="-1">
       <controlProperties>
         <text>%u5B50%u4EFB%u52A1%u7F29%u8FDB%u663E%u793A</text>
       </controlProperties>
@@ -130,6 +130,11 @@
         <text>%u6211</text>
         <align>center</align>
         <backgroundAlpha>0</backgroundAlpha>
+      </controlProperties>
+    </control>
+    <control controlID="26" controlTypeID="com.balsamiq.mockups::StickyNote" x="38" y="400" w="185" h="173" measuredW="109" measuredH="123" zOrder="23" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>%u8FD9%u91CC%u662F%u4E00%u4E2A%u5217%u8868%uFF0C%u8FD9%u4E2A%u8349%u56FE%u5DE5%u5177%u8868%u73B0%u4E0D%u51FA%u6765%u90A3%u79CD%u6548%u679C%uFF0C%u5C31%u53EA%u80FD%u753B%u6210%u8FD9%u6837</text>
       </controlProperties>
     </control>
   </controls>
