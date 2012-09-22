@@ -26,10 +26,10 @@
         <text>%u5DE5%u7A0B%u5217%u8868</text>
       </controlProperties>
     </control>
-    <control controlID="39" controlTypeID="com.balsamiq.mockups::Label" x="32" y="284" w="81" h="23" measuredW="44" measuredH="23" zOrder="14" locked="false" isInGroup="-1">
+    <control controlID="39" controlTypeID="com.balsamiq.mockups::Label" x="32" y="284" w="81" h="23" measuredW="57" measuredH="23" zOrder="14" locked="false" isInGroup="-1">
       <controlProperties>
         <bold>true</bold>
-        <text>%u65B0%u4EFB%u52A1</text>
+        <text>%u4EFB%u52A1%u5217%u8868</text>
       </controlProperties>
     </control>
     <control controlID="40" controlTypeID="com.balsamiq.mockups::HRule" x="32" y="307" w="537" h="-1" measuredW="100" measuredH="5" zOrder="15" locked="false" isInGroup="-1"/>

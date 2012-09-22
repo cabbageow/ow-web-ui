@@ -1,4 +1,4 @@
-<mockup version="1.0" skin="sketch" measuredW="1239" measuredH="482" mockupW="1201" mockupH="461">
+<mockup version="1.0" skin="sketch" measuredW="1239" measuredH="491" mockupW="1201" mockupH="470">
   <controls>
     <control controlID="0" controlTypeID="com.balsamiq.mockups::Label" x="262" y="11" w="-1" h="-1" measuredW="57" measuredH="23" zOrder="3" locked="false" isInGroup="-1">
       <controlProperties>
@@ -119,7 +119,7 @@
         <text>%u5220%u9664</text>
       </controlProperties>
     </control>
-    <control controlID="36" controlTypeID="com.balsamiq.mockups::StickyNote" x="611" y="349" w="-1" h="-1" measuredW="109" measuredH="123" zOrder="25" locked="false" isInGroup="-1">
+    <control controlID="36" controlTypeID="com.balsamiq.mockups::StickyNote" x="604" y="358" w="-1" h="-1" measuredW="109" measuredH="123" zOrder="25" locked="false" isInGroup="-1">
       <controlProperties>
         <text>%u5220%u9664%u9700%u8981%u786E%u8BA4</text>
       </controlProperties>

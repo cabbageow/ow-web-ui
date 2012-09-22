@@ -13,10 +13,10 @@
     <control controlID="5" controlTypeID="com.balsamiq.mockups::Arrow" x="135" y="84" w="56" h="41" measuredW="150" measuredH="100" zOrder="2" locked="false" isInGroup="-1">
       <controlProperties>
         <leftArrow>false</leftArrow>
-        <direction>top</direction>
-        <curvature>-1</curvature>
-        <text/>
         <rightArrow>true</rightArrow>
+        <curvature>-1</curvature>
+        <direction>top</direction>
+        <text/>
       </controlProperties>
     </control>
     <control controlID="6" controlTypeID="com.balsamiq.mockups::Button" x="191" y="168" w="-1" h="-1" measuredW="70" measuredH="28" zOrder="3" locked="false" isInGroup="-1">
@@ -27,10 +27,10 @@
     <control controlID="7" controlTypeID="com.balsamiq.mockups::Arrow" x="135" y="97" w="56" h="84" measuredW="150" measuredH="100" zOrder="4" locked="false" isInGroup="-1">
       <controlProperties>
         <leftArrow>false</leftArrow>
-        <direction>top</direction>
-        <curvature>-1</curvature>
-        <text/>
         <rightArrow>true</rightArrow>
+        <curvature>-1</curvature>
+        <direction>top</direction>
+        <text/>
       </controlProperties>
     </control>
     <control controlID="8" controlTypeID="com.balsamiq.mockups::Button" x="191" y="223" w="-1" h="-1" measuredW="70" measuredH="28" zOrder="5" locked="false" isInGroup="-1">
@@ -41,10 +41,10 @@
     <control controlID="9" controlTypeID="com.balsamiq.mockups::Arrow" x="135" y="97" w="52" h="145" measuredW="150" measuredH="100" zOrder="6" locked="false" isInGroup="-1">
       <controlProperties>
         <leftArrow>false</leftArrow>
-        <direction>top</direction>
-        <curvature>-1</curvature>
-        <text/>
         <rightArrow>true</rightArrow>
+        <curvature>-1</curvature>
+        <direction>top</direction>
+        <text/>
       </controlProperties>
     </control>
     <control controlID="11" controlTypeID="com.balsamiq.mockups::Label" x="91" y="31" w="-1" h="-1" measuredW="122" measuredH="23" zOrder="7" locked="false" isInGroup="-1">
@@ -168,49 +168,49 @@
     <control controlID="32" controlTypeID="com.balsamiq.mockups::Arrow" x="319" y="581" w="43" h="42" measuredW="150" measuredH="100" zOrder="27" locked="false" isInGroup="-1">
       <controlProperties>
         <leftArrow>false</leftArrow>
-        <direction>top</direction>
-        <curvature>-1</curvature>
-        <text/>
         <rightArrow>true</rightArrow>
+        <curvature>-1</curvature>
+        <direction>top</direction>
+        <text/>
       </controlProperties>
     </control>
     <control controlID="33" controlTypeID="com.balsamiq.mockups::Arrow" x="336" y="581" w="43" h="42" measuredW="150" measuredH="100" zOrder="28" locked="false" isInGroup="-1">
       <controlProperties>
         <leftArrow>true</leftArrow>
-        <direction>top</direction>
-        <curvature>1</curvature>
-        <text/>
         <rightArrow>false</rightArrow>
+        <curvature>1</curvature>
+        <direction>top</direction>
+        <text/>
       </controlProperties>
     </control>
     <control controlID="35" controlTypeID="com.balsamiq.mockups::Arrow" x="176" y="571" w="282" h="197" measuredW="150" measuredH="100" zOrder="29" locked="false" isInGroup="-1">
       <controlProperties>
         <leftArrow>false</leftArrow>
-        <backgroundAlpha>0.5</backgroundAlpha>
-        <direction>top</direction>
-        <curvature>-1</curvature>
-        <text/>
         <rightArrow>true</rightArrow>
+        <direction>top</direction>
+        <backgroundAlpha>0.5</backgroundAlpha>
+        <text/>
+        <curvature>-1</curvature>
       </controlProperties>
     </control>
     <control controlID="36" controlTypeID="com.balsamiq.mockups::Arrow" x="298" y="570" w="160" h="197" measuredW="150" measuredH="100" zOrder="30" locked="false" isInGroup="-1">
       <controlProperties>
         <leftArrow>false</leftArrow>
-        <backgroundAlpha>0.5</backgroundAlpha>
-        <direction>top</direction>
-        <curvature>-1</curvature>
-        <text/>
         <rightArrow>true</rightArrow>
+        <direction>top</direction>
+        <backgroundAlpha>0.5</backgroundAlpha>
+        <text/>
+        <curvature>-1</curvature>
       </controlProperties>
     </control>
     <control controlID="37" controlTypeID="com.balsamiq.mockups::Arrow" x="379" y="629" w="79" h="133" measuredW="150" measuredH="100" zOrder="31" locked="false" isInGroup="-1">
       <controlProperties>
         <leftArrow>false</leftArrow>
-        <backgroundAlpha>0.5</backgroundAlpha>
-        <direction>top</direction>
-        <curvature>-1</curvature>
-        <text/>
         <rightArrow>true</rightArrow>
+        <direction>top</direction>
+        <backgroundAlpha>0.5</backgroundAlpha>
+        <text/>
+        <curvature>-1</curvature>
       </controlProperties>
     </control>
   </controls>
