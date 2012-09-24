@@ -1,0 +1,43 @@
+	"request":{
+		"path":"/mnt/disk1",
+		"path_comment":"请求'/mnt/disk1下的文件'"
+	},
+	
+	"response":{
+		"result":"ok",
+		"data":{
+			"path":"/mnt/disk1",
+			"list":[
+				{
+					"name":"dir1",
+					"type":"dir",
+					"mime-type":"",
+					"size":0,"size_comment":"目录大小为0",
+					"time":{
+						"create":"2012-01-02 22:33:07"
+					},
+					"path":"dir1", "path_comment":"如果要请求此目录下的文件列表，path参数为 data.path + path, 也就是 /mnt/disk1/dir1"
+				},
+				{
+					"name":"dir2",
+					"type":"dir",
+					"mime-type":"",
+					"size":0,"size_comment":"",
+					"time":{
+						"create":"2012-01-22 22:33:07"
+					},
+					"path":"dir2"
+				},
+				{
+					"name":"pic_001.jpg",
+					"type":"file",
+					"mime-type":"image/jpeg", "mime-type_comment":"image/开头的表示文件类型为图片",
+					"size":56000,
+					"time":{
+						"create":"2012-01-22 17:53:43"
+					},
+					"path":"pic_001.jpg"
+				}
+			]
+		}
+	}

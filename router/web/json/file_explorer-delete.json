@@ -1,0 +1,9 @@
+"request":{
+	"path":"/mnt/disk1/pic_001.jpg",
+	"path_comment":"要删除文件或目录的path"
+},
+
+"response":{
+		"result":"ok",
+		"data":{}
+}

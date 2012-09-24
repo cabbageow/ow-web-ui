@@ -11,10 +11,10 @@
       </controlProperties>
     </control>
     <control controlID="2" controlTypeID="com.balsamiq.mockups::HRule" x="274" y="75" w="936" h="-1" measuredW="100" measuredH="5" zOrder="2" locked="false" isInGroup="-1"/>
-    <control controlID="3" controlTypeID="com.balsamiq.mockups::DataGrid" x="274" y="140" w="917" h="121" measuredW="367" measuredH="86" zOrder="3" locked="false" isInGroup="-1">
+    <control controlID="3" controlTypeID="com.balsamiq.mockups::DataGrid" x="274" y="140" w="917" h="121" measuredW="452" measuredH="86" zOrder="3" locked="false" isInGroup="-1">
       <controlProperties>
         <hLines>false</hLines>
-        <text>%u540D%u79F0%2C%20%u7C7B%u578B%2C%20%u5927%u5C0F%2C%20SAMBA%u5171%u4EAB%2C%20DLNA%u5171%u4EAB%2C%u5220%u9664%0A%u52A8%u7269%20%2C%20%u76EE%u5F55%2C%20%2C%20%5Bx%5D%2C%5B%5D%2C%u5220%u9664%0Axxx.jpf%2C%20jpg%2C%2024k%2C%20%5B%5D%2C%20%5B%5D%2C%u5220%u9664</text>
+        <text>%u540D%u79F0%2C%20%u7C7B%u578B%2C%20%u5927%u5C0F%2C%20%u521B%u5EFA%u65F6%u95F4%2CSAMBA%u5171%u4EAB%2C%20DLNA%u5171%u4EAB%2C%u5220%u9664%0A%u52A8%u7269%20%2C%20%u76EE%u5F55%2C%20%2C%202012-9-13%2C%5Bx%5D%2C%5B%5D%2C%u5220%u9664%0Axxx.jpf%2C%20jpg%2C%2024k%2C2011-9-11%2C%20%5B%5D%2C%20%5B%5D%2C%u5220%u9664</text>
         <vLines>true</vLines>
       </controlProperties>
     </control>
