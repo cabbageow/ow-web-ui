@@ -1,5 +1,5 @@
 ﻿@charset "utf-8";
-body,html{font-family: Arial,sans-serif;width:100%}
+body,html{font-family: Arial,sans-serif;}
 .none{margin:0;padding:0;}
 .no-list-style{list-style:none;}
 .wrapall{position:relative;width:100%;}
@@ -32,8 +32,35 @@ a,a:hover{text-decoration:none;color:#C00}
 .w150{width:150px;}
 .w200{width:200px;}
 .w800{width:800px;}
+.line-height16{line-height:16px;}
 #accordion .aClass1{color:#004276;font-weight:900;}
 #accordion  .aClass2{color:#252525;font-weight:500;}
 .loadingRuntxt{position:absolute;top:0;left:45%;}
 .memu{background-color:#9F9999;}
 .inline{display:inline;}
+.ui-widget {font-size: 13px;}
+/*页码的css*/
+.endPageNum {clear: both;
+color: #2B2B2B;
+display: block;
+font-family: 宋体, serif;
+font-size: 12px;
+height: 33px;
+margin:0 auto;
+padding-bottom: 6px;
+padding-left: 12px;
+padding-right: 12px;
+padding-top: 10px;
+text-align: left;
+width: 536px;
+}
+.endPageNum table{width:100%;}
+.endPageNum .td-page{text-align:center;}
+.endPageNum .s1{width:52px;height:20px; line-height:20px;text-align:center;}
+.endPageNum .s2{background:#1f3a87; border:1px solid #004927; color:#fff; font-weight:bold; text-align:center;}
+.endPageNum a.s2:visited {color:#fff;}
+.endPageNum a{padding:0 6px;margin:5px 2px 0 0; color:#1E50A2;background:#fff;height:20px; line-height:20px; display:inline-block; border:1px solid #004927; float:none; text-align:center;}
+.endPageNum a:visited{color:#1f3a87;} 
+.endPageNum a:hover{color:#fff; background:#1E50A2; border:1px solid #1E50A2;float:none;}
+.endPageNum .s3{cursor:default;padding:0 5px;margin:5px 2px 0 0; color:#ccc;background:#fff; display:inline-block; border:1px solid #ccc; float:none; text-align:center;}
+/*页码的css*/

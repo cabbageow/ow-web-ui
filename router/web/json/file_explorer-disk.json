@@ -1,43 +1,88 @@
-	"request":{
-		"path":"/mnt/disk1",
-		"path_comment":"请求'/mnt/disk1下的文件'"
+{
+	"request" : {
+		"path" : "/mnt/disk1",
+		"path_comment" : "请求'/mnt/disk1下的文件'"
 	},
 	
-	"response":{
-		"result":"ok",
-		"data":{
-			"path":"/mnt/disk1",
-			"list":[
-				{
-					"name":"dir1",
-					"type":"dir",
-					"mime-type":"",
-					"size":0,"size_comment":"目录大小为0",
-					"time":{
-						"create":"2012-01-02 22:33:07"
+	"response" : {
+		"result" : "ok",
+		"data" : {
+			"path" : "/mnt/disk1",
+			"name":"磁盘1",
+			"list" : [{
+					"name" : "dir1",
+					"type" : "dir",
+					"mime-type" : "",
+					"size" : 0,
+					"size_comment" : "目录大小为0",
+					"time" : {
+						"create" : "2012-01-02 22:33:07",
+						"second":1258600
 					},
-					"path":"dir1", "path_comment":"如果要请求此目录下的文件列表，path参数为 data.path + path, 也就是 /mnt/disk1/dir1"
-				},
-				{
-					"name":"dir2",
-					"type":"dir",
-					"mime-type":"",
-					"size":0,"size_comment":"",
-					"time":{
-						"create":"2012-01-22 22:33:07"
+					
+					"path" : "dir1",
+					"path_comment" : "如果要请求此目录下的文件列表,path参数为 data.path + path, 也就是 /mnt/disk1/dir1"
+				}, {
+					"name" : "dir2",
+					"type" : "dir",
+					"mime-type" : "",
+					"size" : 0,
+					"size_comment" : "",
+					"time" : {
+						"create" : "2012-02-22 22:33:07",
+						"second":1258602
 					},
-					"path":"dir2"
-				},
-				{
-					"name":"pic_001.jpg",
-					"type":"file",
-					"mime-type":"image/jpeg", "mime-type_comment":"image/开头的表示文件类型为图片",
-					"size":56000,
-					"time":{
-						"create":"2012-01-22 17:53:43"
+					
+					"path" : "dir2"
+				}, {
+					"name" : "pic_001.jpg",
+					"type" : "file",
+					"mime-type" : "image/jpeg",
+					"mime-type_comment" : "image/开头的表示文件类型为图片",
+					"size" : 56000,
+					"time" : {
+						"create" : "2011-01-22 17:53:43",
+						"second":1058600
+					},					
+					"path" : "pic_001.jpg"
+				}, {
+					"name" : "我的视频.mp4",
+					"type" : "file",
+					"mime-type" : "video/mp4",
+					"size" : 0,
+					"size_comment" : "",
+					"time" : {
+						"create" : "2011-11-22 2:33:07",
+						"second":1158632
 					},
-					"path":"pic_001.jpg"
+					
+					"path" : "我的视频.mp4"
+				}, {
+					"name" : "11.mp3",
+					"type" : "file",
+					"mime-type" : "audio/mp3",
+					"size" : 0,
+					"size_comment" : "",
+					"time" : {
+						"create" : "2011-04-22 22:33:07",
+						"second":1058932
+					},
+					
+					"path" : "11.mp3"
+				}, {
+					"name" : "我的记事本.txt",
+					"type" : "file",
+					"mime-type" : "text/txt",
+					"size" : 0,
+					"size_comment" : "",
+					"time" : {
+						"create" : "2011-05-22 22:33:07",
+						"second":1067632
+					},
+					
+					"path" : "我的记事本.txt"
 				}
 			]
 		}
 	}
+}

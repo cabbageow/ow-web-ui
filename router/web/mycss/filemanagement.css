@@ -3,4 +3,21 @@
 .filelayout-item{}
 .border-right{border-right:#ff0 solid 1px;}
 .filelayout-item-span{padding:0 30px 0;}
-.title01 {font-size: 20px;font-weight: 700;height: 25px;line-height: 20px;color: #004276;}
+#file_management{font-size:13px;}
+#file_management a{color:#09497B;}
+#file_management a:hover{color:#cc0000;}
+#file_management .title01 {font-size: 20px;font-weight: 700;height: 25px;line-height: 20px;color: #004276;margin:10px 0;}
+#file_management .navbanner{font-size: 14px;font-weight: 700; height: 30px; line-height: 30px; padding: 0 0 0 15px;}
+#file_management .table{border-collapse:collapse;} 
+#file_management .table,th{border:1px solid black;} 
+#file_management .td{border-right:1px solid black;}
+#file_management .th{background-color:#004276;width:150px;color:#fff;cursor:pointer;}
+#file_management .th-hover:hover{background:#483D8B;}
+#file_management .td{width:150px;text-align:center;}
+#file_management .tr{height:30px;line-height:30px;}
+#file_management .name-file{width:140px;overflow:hidden;white-space: nowrap;text-overflow: ellipsis;}
+#file_management .dir{background: url(../image/icolist.png) no-repeat -65px -5px;display:inline-block;height:25px;width:35px;vertical-align: middle;}
+#file_management .audio{background:url(../image/icolist.png) no-repeat -2px -5px;}
+#file_management .video{background: url(../image/icolist.png) no-repeat -35px -5px;}
+#file_management .image{background: url(../image/icolist.png) no-repeat -105px -5px;}
+#file_management .text{background: url(../image/icolist.png) no-repeat -135px -5px;}

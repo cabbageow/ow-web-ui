@@ -1,23 +1,31 @@
-"request":{
-	"path":"/",
-	"path_comment":"路径，'/'代表路由器,表示列出路由器下当前可以管理的磁盘"
-},
-
-"response":{
-		"result":"ok",
-		"data":{
-			"path":"/",
-			"list":[
-				{
-					"name":"disk1",
-					"type":"disk","type_comment":"disk-磁盘，dir-目录，file-文件",
-					"mime-type":"","mime-type_comment":"用来说明具体文件的类型，比方说avi，jpg等，disk和dir此字段为空",
-					"size":12560000,"size_comment":"单位，字节, 这里实际上就是硬盘的大小",
-					"time":{
-						"create":"","create_comment":"disk的create time为空",
+{
+	"request" : {
+		"path" : "/",
+		"path_comment" : "路径,/ 代表路由器,表示列出路由器下当前可以管理的磁盘"
+	},
+	"response" : {
+		"result" : "ok",
+		"data" : {
+			"path" : "/",
+			"name":"路由器",
+			"list" : [{
+					"name" : "disk1",
+					"type" : "disk",
+					"type_comment" : "disk-磁盘,dir-目录,file-文件",
+					"mime-type" : "",
+					"mime-type_comment" : "用来说明具体文件的类型,比方说avi,jpg等,disk和dir此字段为空",
+					"size" : 12560000,
+					"size_comment" : "单位,字节, 这里实际上就是硬盘的大小",
+					"time" : {
+						"create" : "",
+						"second":"",
+						"create_comment" : "disk的create time为空"
 					},
-					"path":"mnt/disk1","path_comment":"此路径为相对路径--相对data.path 如果请求此路径下的文件，那么就用data.path + path组成完整路径"
+					
+					"path" : "mnt/disk1",
+					"path_comment" : "此路径为相对路径--相对data.path 如果请求此路径下的文件,那么就用data.path + path组成完整路径"
 				}
 			]
 		}
+	}
 }

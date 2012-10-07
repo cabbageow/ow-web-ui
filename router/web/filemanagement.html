@@ -1,59 +1,36 @@
 ﻿<!DOCTYPE HTML>
 <html>
-  
   <head>
     <meta charset="UTF-8">
     <title>
       文件管理
     </title>
-    <link rel="stylesheet" href="mycss/common.css" type="text/css" />
-    <link href="mycss/filemanagement.css" type="text/css" />
-    <style>
-	body{font-size:13px;}
-      table{border-collapse:collapse;} 
-	  table,th{border:1px solid black;} 
-	  td{border-right:1px solid black;}
-	  .th{background-color:#ccc;width:150px;}
-	  .td{width:150px;text-align:center;}
-    </style>
-    
+    <!--<link rel="stylesheet" href="mycss/common.css" type="text/css" />-->
+    <link rel="stylesheet" href="mycss/filemanagement.css" type="text/css" />
     <body>
-      <div class="wrapall">
+      <div class="wrapall" id="file_management">
         <h2 class="title01 none">
           文件管理
           <hr/>
         </h2>
         <ul class="none navbanner" id="fileNav">
-          <li class="inline">
-            <a href="index.html" class="color-blue">
-              路由器
-            </a>
-            &gt
-          </li>
-          <li class="inline">
-            <a href="index.html" class="color-blue">
-              磁盘1
-            </a>
-            &gt
-          </li>
-          <li class="inline">
-            <b>
-              路由器
-            </b>
-          </li>
+         
         </ul>
         <div class="data-show">
-          <table>
-            <tbody>
-              <tr >
-                <th class="th block">
+          <table class="table" id="fileData_table">
+		    <thead >
+			<tr>
+                <th class="th block th-hover" sort="name">
                   名称
                 </th>
-                <th class="th block">
+                <th class="th block ">
                   类型
                 </th >
-                <th class="th block">
+                <th class="th block th-hover" sort="size">
                   大小
+                </th>
+				 <th class="th block th-hover" sort="time">
+                  创建时间
                 </th>
                 <th class="th block">
                   SAMBA共享
@@ -64,51 +41,127 @@
 				<th class="th block">
                  删除
                 </th>
-              </tr>
-              <tr >
-                <td class="td white">
-                  动物
+				</tr>
+              </thead>
+            <tbody id="tbody_fileData">            
+            <!--  <tr class="tr white" >
+                <td class="td  ">
+                  <div class="name-file"><a href="/disk01/dir/pp.jpg">动物</a></div>
                 </td>
-                <td class="td white">
-                  目录
+                <td class="td  ">
+                 <div class="dir"></div> 目录
                 </td>
-                <td class="td white">
+                <td class="td  ">
                   大小
                 </td>
-                <td class="td white">
+				 <td class="td  ">
+                  2012-09-12 12:20:59
+                </td>
+                <td class="td  ">
                  <input type="checkbox" name="SAMBAshare" value ="SAMBA共享" checked="checked">SAMBA共享<br/>
                 </td>
-                <td class="td  white">
+                <td class="td  ">
 				 <input type="checkbox" name="DLANshare" value ="DLAN共享" checked="checked">DLAN共享<br/>
                 </td>
-				<td class="td white">
-                 <button value="delete" name="delete">删除</button>
+				<td class="td  ">
+                 <button value="delete" name="delete" path="/disk01/dir/">删除</button>
                 </td>
               </tr>
-              <tr>
-                <td class="td block">
-                  pp.jpg
+              <tr class="tr block">
+                <td class="td">
+                 <div class="name-file"><a href="/disk01/dir/pp.jpg">pp.jpg</a></div>
                 </td>
-                <td class="td  block">
-                  jpg
+                <td class="td  ">
+                 <div class="dir pic"></div>jpg
                 </td>
-                <td class="td  block">
+                <td class="td  ">
                    24k
                 </td>
-                <td class="td  block">
+				<td class="td  ">
+                   2012-08-12 09:15:30
+                </td>
+                <td class="td   ">
                   <input type="checkbox" name="SAMBAshare" value ="SAMBA共享" >SAMBA共享<br/>
                 </td>
-                <td class="td  block">
+                <td class="td  ">
                  <input type="checkbox" name="DLANshare" value ="DLAN共享" checked="checked">DLAN共享<br/>
                 </td>
-				<td class="td  block">
-				 <button value="delete" name="delete">删除</button>
+				<td class="td   ">
+				 <button value="delete" name="delete" path="/disk01/dir/pp.jpg">删除</button>
 				 </td>
               </tr>
+			 <tr class="tr white">
+                <td class="td">
+                 <div class="name-file"><a href="/disk01/dir/pp.jpg">pp.jpg</a></div>
+                </td>
+                <td class="td  ">
+                 <div class="dir mp3"></div>jpg
+                </td>
+                <td class="td  ">
+                   24k
+                </td>
+				<td class="td  ">
+                   2012-08-12 09:15:30
+                </td>
+                <td class="td   ">
+                  <input type="checkbox" name="SAMBAshare" value ="SAMBA共享" >SAMBA共享<br/>
+                </td>
+                <td class="td  ">
+                 <input type="checkbox" name="DLANshare" value ="DLAN共享" checked="checked">DLAN共享<br/>
+                </td>
+				<td class="td   ">
+				 <button value="delete" name="delete" path="/disk01/dir/pp.jpg">删除</button>
+				 </td>
+              </tr>
+			                <tr class="tr block">
+                <td class="td">
+                 <div class="name-file"><a href="/disk01/dir/pp.jpg">pp.jpg</a></div>
+                </td>
+                <td class="td  ">
+                 <div class="dir mp4"></div>jpg
+                </td>
+                <td class="td  ">
+                   24k
+                </td>
+				<td class="td  ">
+                   2012-08-12 09:15:30
+                </td>
+                <td class="td   ">
+                  <input type="checkbox" name="SAMBAshare" value ="SAMBA共享" >SAMBA共享<br/>
+                </td>
+                <td class="td  ">
+                 <input type="checkbox" name="DLANshare" value ="DLAN共享" checked="checked">DLAN共享<br/>
+                </td>
+				<td class="td   ">
+				 <button value="delete" name="delete" path="/disk01/dir/pp.jpg">删除</button>
+				 </td>
+              </tr>-->
             </tbody>
           </table>
+		<div class="endPageNum">
+		<table align="center">
+		<tbody>
+		<tr>
+		<td class="td-page" id="filePaging">
+		<!-- <span class="s1 s3">上一页</span>
+		 <span class="s1">1</span>
+		 <a href="http://mobile.163.com/12/1003/06/8CSCGPJA00112K88_2.html" target="_self">2</a> 
+		 <a href="http://mobile.163.com/12/1003/06/8CSCGPJA00112K88_3.html" target="_self">3</a>...		 
+		 <a href="http://mobile.163.com/12/1003/06/8CSCGPJA00112K88_4.html" target="_self">4</a> 
+		 <a href="http://mobile.163.com/12/1003/06/8CSCGPJA00112K88_5.html" target="_self">500</a> ...
+		 <a href="http://mobile.163.com/12/1003/06/8CSCGPJA00112K88_2.html" target="_self" class="s1">下一页</a>
+		 <div class="clear"></div>-->
+		</td>
+		</tr>
+		</tbody></table>
+      </div>
         </div>
       </div>
+	  <!--
+	  <script src="js/jquery-1.4.2.min.js" type="text/javascript"type="text/javascript"></script>
+	 <script type="text/javascript" src="js/common.js"></script>
+	 -->
+	  <script type="text/javascript" src="js/filemanagement.js">
+	  </script>
     </body>
-
 </html>
