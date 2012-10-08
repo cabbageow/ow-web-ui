@@ -14,11 +14,11 @@ fileManageObj.showThePathNav = function (path, navDOM) {
 	var pathArr = path.split("/"),
 	html = [];
 	pathArr[0] = "/";
-	if (path == '/') {
+	if (path == '/'||fileManageObj.pathName.length==1) {
 		html.push('<li class="inline"><b>' + fileManageObj.pathName[0] + '</b></li>');
 	} else {	
 		for (var i = 0; i < pathArr.length - 2; i++) {
-			html.push('<li class="inline"><a href = "' + pathArr[i] + '" class = "color-blue" index = "' + i + '" > ' + fileManageObj.pathName[i] + '</a>&gt</li>');
+			html.push('<li class="inline"><a href = "#" path="' + pathArr[i] + '" class = "color-blue" index = "' + i + '" > ' + fileManageObj.pathName[i] + '</a>&gt</li>');
 		}
 		html.push('<li class="inline"><b>' + fileManageObj.pathName[i] + '</b></li>');
 	}
@@ -272,6 +272,18 @@ fileManageObj.paging.bind("click", function (event) {
 		var num = target.href.split('/');
 		num = Number(num[num.length - 1])
 		fileManageObj.buildPaging(num, fileManageObj.paging);
+	}
+	event.stopPropagation();
+	event.preventDefault();
+	return false;
+});
+fileManageObj.navDOM.bind("click",function(event){
+	var target = event.target,paths='',nameIndex = 0;
+	if(target.tagName==='A'){
+		paths=target.getAttribute('path');
+		nameIndex= target.getAttribute('index');
+		fileManageObj.pathName.length=nameIndex;
+		fileManageObj.getJSON(fileManageObj.file_explorer_url_disk,{path:paths});
 	}
 	event.stopPropagation();
 	event.preventDefault();
