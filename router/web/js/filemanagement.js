@@ -152,6 +152,7 @@ fileManageObj.buildPaging = function (num, jqDOM) {
 						html.push('<a href="' + i + '">' + i + '</a>');
 					}
 				}
+				html.push('...<a href="' + (fileManageObj.turnPage.pageLength - 2) + '">' + (fileManageObj.turnPage.pageLength - 2) + '</a> <a href="' + (fileManageObj.turnPage.pageLength - 1) + '">' + (fileManageObj.turnPage.pageLength - 1) + '</a> <a href="' + (fileManageObj.turnPage.pageLength) + '">' + (fileManageObj.turnPage.pageLength) + '</a>');
 			} else {
 				html.push('<a href="1" >1</a> <a href="2"  >2</a> <a href="3"  >3</a>...');
 				if (num + 3 >= fileManageObj.turnPage.pageLength) {
@@ -163,8 +164,8 @@ fileManageObj.buildPaging = function (num, jqDOM) {
 						}
 					}
 				} else {
-					html.push('<a href="' + (num - 1) + '">' + (num - 1) + '</a> <a href="' + num + '">' + num + '</a> <a href="' + (num + 1) + '">' + (num + 1) + '</a>...');
-					html.push('<a href="' + (fileManageObj.turnPage.pageLength - 2) + '">' + (fileManageObj.turnPage.pageLength - 2) + '</a> <a href="' + (fileManageObj.turnPage.pageLength - 1) + '>' + (fileManageObj.turnPage.pageLength - 1) + '</a> <a href="' + (fileManageObj.turnPage.pageLength) + '">' + (fileManageObj.turnPage.pageLength) + '</a>');
+					html.push('<a href="' + (num - 1) + '">' + (num - 1) + '</a> <span class="s1">' + num + '</a> <a href="' + (num + 1) + '">' + (num + 1) + '</a>...');
+					html.push('<a href="' + (fileManageObj.turnPage.pageLength - 2) + '">' + (fileManageObj.turnPage.pageLength - 2) + '</a> <a href="' + (fileManageObj.turnPage.pageLength - 1) + '">' + (fileManageObj.turnPage.pageLength - 1) + '</a> <a href="' + (fileManageObj.turnPage.pageLength) + '">' + (fileManageObj.turnPage.pageLength) + '</a>');
 				}
 			}
 		}
